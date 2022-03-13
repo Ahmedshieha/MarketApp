@@ -30,27 +30,31 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
         itemPriceLable.textColor = .red
         itemDescriptionTextView.text = item.description ?? ""
         downloadItemImages()
-        print(item.imageLinks.count)
         itemImagesCollectionView.dataSource = self
         itemImagesCollectionView.delegate =  self
         itemImagesCollectionView.register(UINib(nibName: "ItemImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Itemimagecell")
     }
     
     
+    
+    
     func downloadItemImages () {
-        downloadImages(imageLinks: item.imageLinks) { images in
-            if images.count > 0 {
-                
+        
+        if item != nil && item.imageLinks != nil {
+            downloadImages(imageLinks: self.item.imageLinks) { images in
                 DispatchQueue.main.async {
-                    self.itemImages = images as! [UIImage]
-                    self.itemImagesCollectionView.reloadData()
+                    if images.count > 0 {
+                        self.itemImages = images
+                        self.itemImagesCollectionView.reloadData()
+                    }
                 }
-                
-            }
-            else {
-                self.itemImages = []
-            }
         }
+            
+        } else {
+            
+        }
+       
+       
     }
     
     
