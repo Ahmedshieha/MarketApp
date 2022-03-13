@@ -16,26 +16,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="104"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Wv3-Q2-sqN">
-                        <rect key="frame" x="0.0" y="0.0" width="287" height="104"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wv3-Q2-sqN">
+                        <rect key="frame" x="5" y="5" width="277" height="94"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Wv3-Q2-sqN" secondAttribute="bottom" id="HQA-O9-2Zb"/>
-                <constraint firstAttribute="trailing" secondItem="Wv3-Q2-sqN" secondAttribute="trailing" id="Kp5-1h-p4F"/>
-                <constraint firstItem="Wv3-Q2-sqN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rdh-bg-WLj"/>
-                <constraint firstItem="Wv3-Q2-sqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TUy-Li-f1z"/>
+                <constraint firstAttribute="trailing" secondItem="Wv3-Q2-sqN" secondAttribute="trailing" constant="5" id="3LE-hi-qiJ"/>
+                <constraint firstAttribute="bottom" secondItem="Wv3-Q2-sqN" secondAttribute="bottom" constant="5" id="Cwk-WC-1Xn"/>
+                <constraint firstItem="Wv3-Q2-sqN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Eb5-IC-M19"/>
+                <constraint firstItem="Wv3-Q2-sqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="pdW-3m-mLz"/>
             </constraints>
             <size key="customSize" width="287" height="104"/>
             <connections>
-                <outlet property="itemImage" destination="Wv3-Q2-sqN" id="gpy-4Q-412"/>
+                <outlet property="itemImageView" destination="Wv3-Q2-sqN" id="gpy-4Q-412"/>
             </connections>
             <point key="canvasLocation" x="155.79710144927537" y="108.48214285714285"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="imagePlaceholder" width="150" height="113.5"/>
-    </resources>
 </document>
