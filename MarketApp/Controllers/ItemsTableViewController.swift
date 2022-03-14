@@ -42,7 +42,6 @@ class ItemsTableViewController: UITableViewController {
         return items.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cell for row at")
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as! ItemsTableViewCell
         cell.configureItemCell(item: items[indexPath.row])
         return cell
@@ -61,7 +60,8 @@ class ItemsTableViewController: UITableViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
         let itemDetailsViewController = vc.instantiateViewController(withIdentifier: "ItemDetailsViewController")  as? ItemDetailsViewController
         itemDetailsViewController?.item = items[indexPath.row]
-        self.present(itemDetailsViewController!, animated: true, completion: nil)
+        //        self.present(itemDetailsViewController!, animated: true, completion: nil)
+        self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
         
         
     }

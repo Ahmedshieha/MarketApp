@@ -29,8 +29,6 @@ class AddItemViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         addPhotoButton.layer.cornerRadius = 10
-        hud.textLabel.text =  "Loading"
-        hud.show(in: self.view)
         
     }
     
@@ -78,6 +76,7 @@ class AddItemViewController: UIViewController {
         let item = Item()
         item.id = UUID().uuidString
         item.name = titleTextField.text!
+        item.description = descriptionTextView.text
         item.categoryId = category?.id
         item.price = Double(priceTextField.text!.replacedArabicDigitsWithEnglish)
         
@@ -85,7 +84,6 @@ class AddItemViewController: UIViewController {
             uploadImages(images: itemImges, itemId: item.id) {imageLinks in
                 
                 item.imageLinks = imageLinks
-                print(imageLinks)
                 saveItemToFirebase(item: item)
                 self.popView()
                 self.hideLoadingIndicator()

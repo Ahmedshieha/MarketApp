@@ -209,7 +209,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3t2-aJ-DNl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3t2-aJ-DNl">
                                 <rect key="frame" x="20" y="226" width="374" height="161"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
@@ -238,12 +238,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="FEF-rH-L8b" firstAttribute="top" secondItem="3t2-aJ-DNl" secondAttribute="bottom" constant="45.5" id="1ty-vp-LsA"/>
                             <constraint firstItem="RIY-ad-Qoq" firstAttribute="trailing" secondItem="1Hm-07-BQS" secondAttribute="trailing" constant="20" id="9qk-0n-cx6"/>
                             <constraint firstItem="1Hm-07-BQS" firstAttribute="top" secondItem="ST6-AT-pdh" secondAttribute="bottom" constant="25" id="A4J-Z7-0cP"/>
                             <constraint firstItem="FEF-rH-L8b" firstAttribute="centerX" secondItem="Hzb-59-j3j" secondAttribute="centerX" id="GCC-lF-cw1"/>
                             <constraint firstItem="ST6-AT-pdh" firstAttribute="top" secondItem="RIY-ad-Qoq" secondAttribute="top" constant="20" id="GaC-5e-AzS"/>
                             <constraint firstItem="ST6-AT-pdh" firstAttribute="leading" secondItem="RIY-ad-Qoq" secondAttribute="leading" constant="20" id="R4C-uC-UIv"/>
-                            <constraint firstItem="FEF-rH-L8b" firstAttribute="centerY" secondItem="Hzb-59-j3j" secondAttribute="centerY" id="SJe-6n-MBf"/>
                             <constraint firstItem="RIY-ad-Qoq" firstAttribute="trailing" secondItem="3t2-aJ-DNl" secondAttribute="trailing" constant="20" id="bUM-ao-kpt"/>
                             <constraint firstItem="3t2-aJ-DNl" firstAttribute="top" secondItem="1Hm-07-BQS" secondAttribute="bottom" constant="25" id="c6q-Jh-Isb"/>
                             <constraint firstItem="RIY-ad-Qoq" firstAttribute="trailing" secondItem="ST6-AT-pdh" secondAttribute="trailing" constant="20" id="oyZ-FF-ItT"/>
@@ -299,7 +299,6 @@
         <!--Navigation Controller-->
         <scene sceneID="AAZ-Cs-7k0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bet-qv-ynx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dla-7g-Vyr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SdU-fj-zay">
@@ -311,6 +310,7 @@
                         <segue destination="aiU-bN-feI" kind="relationship" relationship="rootViewController" id="Vgm-ZF-pbU"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bet-qv-ynx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-120" y="712"/>
         </scene>
@@ -370,7 +370,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6dy-8X-Y3Q">
                                 <rect key="frame" x="20" y="395" width="374" height="407"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

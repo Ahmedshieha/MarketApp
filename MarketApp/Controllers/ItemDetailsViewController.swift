@@ -33,6 +33,8 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
         itemImagesCollectionView.dataSource = self
         itemImagesCollectionView.delegate =  self
         itemImagesCollectionView.register(UINib(nibName: "ItemImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Itemimagecell")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backButton))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "basket"), style: .plain, target: self, action: #selector(self.basketButton))
     }
     
     
@@ -53,10 +55,15 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
         } else {
             
         }
-       
-       
     }
     
+   @objc func backButton () {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func basketButton () {
+         
+     }
     
     
     

@@ -27,6 +27,7 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         downloadCategories()
         self.navigationItem.title = "Home"
         homeCollectionView.register(Header.self, forSupplementaryViewOfKind: categoryHeaderId, withReuseIdentifier: headerId)
+        
     }
     
     func downloadCategories() {
