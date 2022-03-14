@@ -30,12 +30,14 @@ class AddItemViewController: UIViewController {
         
         addPhotoButton.layer.cornerRadius = 10
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         activityIndicator = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30  , y: self.view.frame.height / 2 - 30 , width: 50, height: 50), type: .lineSpinFadeLoader, color: .lightGray, padding: nil)
+        hud.textLabel.text = "Loading"
         
     }
     
@@ -72,7 +74,8 @@ class AddItemViewController: UIViewController {
         return (titleTextField.text != "" && priceTextField.text != "" && descriptionTextView.text != "")
     }
     func saveItem() {
-        showLoadingIndicator()
+        hud.show(in: self.view)
+//        showLoadingIndicator()
         let item = Item()
         item.id = UUID().uuidString
         item.name = titleTextField.text!
@@ -86,7 +89,8 @@ class AddItemViewController: UIViewController {
                 item.imageLinks = imageLinks
                 saveItemToFirebase(item: item)
                 self.popView()
-                self.hideLoadingIndicator()
+                self.hud.dismiss()
+//                self.hideLoadingIndicator()
             }
             
         }
