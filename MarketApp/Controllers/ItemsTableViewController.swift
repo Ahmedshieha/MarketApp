@@ -18,6 +18,7 @@ class ItemsTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         self.title = category?.name
         
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -26,6 +27,7 @@ class ItemsTableViewController: UITableViewController {
         }
         
     }
+    
     
     func downloadItems() {
         downloadItemsFromFirebase(withCategoryId: category?.id ?? "") { allItemsinCategory in
@@ -60,8 +62,8 @@ class ItemsTableViewController: UITableViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
         let itemDetailsViewController = vc.instantiateViewController(withIdentifier: "ItemDetailsViewController")  as? ItemDetailsViewController
         itemDetailsViewController?.item = items[indexPath.row]
-        //        self.present(itemDetailsViewController!, animated: true, completion: nil)
         self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
+        
         
         
     }

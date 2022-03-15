@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource  {
     
@@ -13,7 +14,8 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
     var itemImages : [UIImage] = []
     
     var  item :  Item!
-    
+    var basket : Basket?
+    let hud = JGProgressHUD()
     @IBOutlet weak var itemImagesCollectionView: UICollectionView!
     
     @IBOutlet weak var itemNameLable: UILabel!
@@ -50,21 +52,78 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
                         self.itemImagesCollectionView.reloadData()
                     }
                 }
-        }
+            }
             
         } else {
             
         }
     }
     
-   @objc func backButton () {
+    @objc func backButton () {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func basketButton () {
-         
-     }
+        addToBasketButton()
+    }
     
+    
+    private func createNewBasket() {
+        let id = UUID().uuidString
+        let newBasket =  Basket()
+        newBasket.id =  id
+        newBasket.ownerId  = "1234"
+        newBasket.itemdIds = [item.id]
+        saveToBasket(basket: newBasket) { error in
+            if error != nil {
+                self.hud.textLabel.text =  "error\(error!.localizedDescription)"
+                self.hud.indicatorView  = JGProgressHUDErrorIndicatorView()
+                self.hud.show(in: self.view)
+                self.hud.dismiss(afterDelay: 2.0)
+            }
+            else {
+                self.configureSuccessIndeicator()
+            }
+        }
+        
+    }
+    
+    
+    
+    private func updateBasket(basket : Basket , withValues : [String:Any]) {
+        updateBasketInFireBase(basket, withValues: withValues) { error in
+            if error != nil  {
+                self.hud.textLabel.text =  "error\(error!.localizedDescription)"
+                self.hud.indicatorView  = JGProgressHUDErrorIndicatorView()
+                self.hud.show(in: self.view)
+                self.hud.dismiss(afterDelay: 2.0)
+            }
+            else {
+                self.configureSuccessIndeicator()
+                
+            }
+        }
+    }
+    
+    func addToBasketButton () {
+        
+        downloadBasketFromFirebase(ownerId: "1234") { basket in
+            if basket == nil {
+                self.createNewBasket()
+            } else {
+                basket?.itemdIds.append(self.item.id)
+                self.updateBasket(basket: basket!, withValues: ["itemIds":basket!.itemdIds!])
+            }
+        }
+    }
+    
+    func configureSuccessIndeicator() {
+        self.hud.textLabel.text = "Added To Basket"
+        self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        self.hud.show(in: self.view)
+        //        self.hud.backgroundColor = .gray
+        self.hud.dismiss(afterDelay: 2.0)
+    }
     
     
     func imagesLayoutSection () -> NSCollectionLayoutSection {

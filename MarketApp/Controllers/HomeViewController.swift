@@ -20,15 +20,14 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeCollectionView.delegate = self
-        homeCollectionView.dataSource = self
-        showCells()
-        homeCollectionView.collectionViewLayout = createCompostionalLayout()
+        
         downloadCategories()
         self.navigationItem.title = "Home"
-        homeCollectionView.register(Header.self, forSupplementaryViewOfKind: categoryHeaderId, withReuseIdentifier: headerId)
+        configureCollectionViewAndCells()
         
     }
+    
+    
     
     func downloadCategories() {
         downloadCategoriesFromFirebase { categories in
@@ -37,10 +36,18 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         }
     }
     
-    func showCells () {
+    
+    func configureCollectionViewAndCells() {
+        homeCollectionView.delegate = self
+        homeCollectionView.dataSource = self
+        homeCollectionView.collectionViewLayout = createCompostionalLayout()
+        homeCollectionView.register(Header.self, forSupplementaryViewOfKind: categoryHeaderId, withReuseIdentifier: headerId)
         self.homeCollectionView.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
         self.homeCollectionView.register(UINib(nibName: "offerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell3")
     }
+    
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,9 +69,8 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         if indexPath.section ==  1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)  as! HomeCollectionViewCell
             cell.configureCell(category: categoryArray[indexPath.row])
-            
-            cell.backgroundColor  =  .orange
             cell.layer.cornerRadius = 15
+            cell.backgroundColor = .orange
             return cell
         }
         
@@ -97,6 +103,7 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         if segue.identifier == "categoryToItemsSeg" {
             let vc = segue.destination as! ItemsTableViewController
             vc.category = (sender as! Category)
+            
         }
     }
     
@@ -105,17 +112,17 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         return UICollectionViewCompositionalLayout {( sectionNumber , env ) -> NSCollectionLayoutSection? in
             
             if sectionNumber == 0 {
-                return self.firstLayoutSection()
+                return self.offerLayoutSection()
             }  else if sectionNumber == 1 {
-                return  self.secondLayoutSection()
+                return  self.categoryLayoutSection()
             }
             
-            return self.firstLayoutSection()
+            return self.offerLayoutSection()
         }
         
     }
     
-    func firstLayoutSection () -> NSCollectionLayoutSection {
+    func offerLayoutSection () -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
@@ -132,7 +139,7 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         
     }
     
-    func secondLayoutSection () -> NSCollectionLayoutSection {
+    func categoryLayoutSection () -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.33))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
