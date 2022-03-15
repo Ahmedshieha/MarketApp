@@ -36,7 +36,7 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
         itemImagesCollectionView.delegate =  self
         itemImagesCollectionView.register(UINib(nibName: "ItemImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Itemimagecell")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backButton))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "basket"), style: .plain, target: self, action: #selector(self.basketButton))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "addToBasket"), style: .plain, target: self, action: #selector(self.basketButton))
     }
     
     

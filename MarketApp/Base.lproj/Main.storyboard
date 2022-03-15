@@ -75,7 +75,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8WS-z2-XpU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1119" y="727"/>
+            <point key="canvasLocation" x="-210.1449275362319" y="726.5625"/>
+        </scene>
+        <!--Basket-->
+        <scene sceneID="kfR-qU-YFW">
+            <objects>
+                <viewController id="6TH-AR-Tx7" customClass="BasketViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="352-BK-KW1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hJ9-8V-0vw">
+                                <rect key="frame" x="5" y="131" width="414" height="595"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jjD-NO-D2c">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rit-Ui-3tz">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="geU-kp-roX">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6TH-AR-Tx7" id="JvD-tD-ABs"/>
+                                    <outlet property="delegate" destination="6TH-AR-Tx7" id="EG6-tW-kml"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vg-g7-hi4">
+                                <rect key="frame" x="20" y="734" width="374" height="59"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="CheckOut"/>
+                                <connections>
+                                    <action selector="checkOutButton:" destination="6TH-AR-Tx7" eventType="touchUpInside" id="VyS-Ze-qOo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items in Basket : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umi-DZ-3gS">
+                                <rect key="frame" x="5" y="88" width="389" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="mDp-t7-7IP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="moC-9A-hWC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="moC-9A-hWC" firstAttribute="trailing" secondItem="umi-DZ-3gS" secondAttribute="trailing" constant="20" id="4aE-90-mGU"/>
+                            <constraint firstItem="hJ9-8V-0vw" firstAttribute="trailing" secondItem="moC-9A-hWC" secondAttribute="trailing" constant="5" id="JE7-ok-4mT"/>
+                            <constraint firstItem="moC-9A-hWC" firstAttribute="bottom" secondItem="9Vg-g7-hi4" secondAttribute="bottom" constant="20" id="Ncd-Lg-mm6"/>
+                            <constraint firstAttribute="bottom" secondItem="hJ9-8V-0vw" secondAttribute="bottom" constant="170" id="Otb-NZ-mNZ"/>
+                            <constraint firstItem="umi-DZ-3gS" firstAttribute="top" secondItem="moC-9A-hWC" secondAttribute="top" id="Xz3-Ou-baa"/>
+                            <constraint firstItem="moC-9A-hWC" firstAttribute="trailing" secondItem="9Vg-g7-hi4" secondAttribute="trailing" constant="20" id="btT-go-L6V"/>
+                            <constraint firstItem="umi-DZ-3gS" firstAttribute="leading" secondItem="moC-9A-hWC" secondAttribute="leading" constant="5" id="eB9-bU-OR5"/>
+                            <constraint firstItem="9Vg-g7-hi4" firstAttribute="top" secondItem="hJ9-8V-0vw" secondAttribute="bottom" constant="8" id="keg-b5-rUq"/>
+                            <constraint firstItem="hJ9-8V-0vw" firstAttribute="leading" secondItem="moC-9A-hWC" secondAttribute="leading" constant="5" id="ume-6q-6JP"/>
+                            <constraint firstItem="9Vg-g7-hi4" firstAttribute="leading" secondItem="moC-9A-hWC" secondAttribute="leading" constant="20" id="vqA-e9-FN9"/>
+                            <constraint firstItem="hJ9-8V-0vw" firstAttribute="top" secondItem="umi-DZ-3gS" secondAttribute="bottom" constant="8" id="yyD-Bt-aJx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Basket" id="ErZ-04-9sk"/>
+                    <connections>
+                        <outlet property="ItemsBasketCollectionView" destination="hJ9-8V-0vw" id="pPB-SD-Nm6"/>
+                        <outlet property="itemsCountLable" destination="umi-DZ-3gS" id="GiG-Qs-jEY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gE-mv-zXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2091.304347826087" y="726.5625"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xxc-ZR-3dO">
@@ -89,6 +166,7 @@
                     <connections>
                         <segue destination="8LI-V5-7yi" kind="relationship" relationship="viewControllers" id="zQD-dd-Rt7"/>
                         <segue destination="qbo-9D-taF" kind="relationship" relationship="viewControllers" id="LdT-dj-afV"/>
+                        <segue destination="vOs-sm-odK" kind="relationship" relationship="viewControllers" id="2UE-wm-JDH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs6-xD-c5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,7 +261,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knw-6E-qkj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="804" y="727"/>
+            <point key="canvasLocation" x="1713.0434782608697" y="726.5625"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="OXm-QO-9jf">
@@ -275,7 +353,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1916" y="727"/>
+            <point key="canvasLocation" x="2826.0869565217395" y="726.5625"/>
         </scene>
         <!--Home-->
         <scene sceneID="Xjp-dW-bcW">
@@ -294,7 +372,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSK-K5-7cr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1791" y="727"/>
+            <point key="canvasLocation" x="-881.15942028985512" y="726.5625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AAZ-Cs-7k0">
@@ -312,7 +390,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bet-qv-ynx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120" y="712"/>
+            <point key="canvasLocation" x="789.85507246376812" y="711.83035714285711"/>
         </scene>
         <!--Item Details View Controller-->
         <scene sceneID="19Z-8l-1no">
@@ -408,11 +486,31 @@
             </objects>
             <point key="canvasLocation" x="763.768115942029" y="1379.4642857142856"/>
         </scene>
+        <!--Basket-->
+        <scene sceneID="wrf-4Z-Pba">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vOs-sm-odK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Basket" image="basket" id="LLm-rH-CEa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GAE-Qc-W7P">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6TH-AR-Tx7" kind="relationship" relationship="rootViewController" id="Bt0-KE-YJ2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iw0-of-xEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3000.0000000000005" y="726.5625"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Vgm-ZF-pbU"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="basket" width="30" height="30"/>
         <image name="homeIcon" width="30" height="30"/>
         <image name="imagePlaceholder" width="150" height="113.5"/>
         <systemColor name="labelColor">
@@ -426,6 +524,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

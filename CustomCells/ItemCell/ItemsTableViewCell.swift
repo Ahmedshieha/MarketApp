@@ -33,13 +33,6 @@ class ItemsTableViewCell: UITableViewCell {
         itemPriceLable.text? = "$" + convertToCurrency(item.price) 
         itemPriceLable.adjustsFontSizeToFitWidth = true
         
-//        if item.imageLinks != nil {
-//            downloadImages(imageLinks: [item.imageLinks.first!]) { images in
-//                self.itemImage.image = images.first
-//            }
-//        }
-        
-        
     }
 
 }
