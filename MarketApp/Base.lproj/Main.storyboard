@@ -110,8 +110,11 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vg-g7-hi4">
-                                <rect key="frame" x="20" y="734" width="374" height="59"/>
+                                <rect key="frame" x="20" y="734" width="374" height="35"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="AVv-tc-Gmh"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="CheckOut"/>
                                 <connections>
@@ -133,7 +136,6 @@
                         <constraints>
                             <constraint firstItem="moC-9A-hWC" firstAttribute="trailing" secondItem="umi-DZ-3gS" secondAttribute="trailing" constant="20" id="4aE-90-mGU"/>
                             <constraint firstItem="hJ9-8V-0vw" firstAttribute="trailing" secondItem="moC-9A-hWC" secondAttribute="trailing" constant="5" id="JE7-ok-4mT"/>
-                            <constraint firstItem="moC-9A-hWC" firstAttribute="bottom" secondItem="9Vg-g7-hi4" secondAttribute="bottom" constant="20" id="Ncd-Lg-mm6"/>
                             <constraint firstAttribute="bottom" secondItem="hJ9-8V-0vw" secondAttribute="bottom" constant="170" id="Otb-NZ-mNZ"/>
                             <constraint firstItem="umi-DZ-3gS" firstAttribute="top" secondItem="moC-9A-hWC" secondAttribute="top" id="Xz3-Ou-baa"/>
                             <constraint firstItem="moC-9A-hWC" firstAttribute="trailing" secondItem="9Vg-g7-hi4" secondAttribute="trailing" constant="20" id="btT-go-L6V"/>

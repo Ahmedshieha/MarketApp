@@ -26,6 +26,7 @@ func downloadBasketFromFirebase(ownerId : String ,  completionHandler : @escapin
         
         guard let snapShot = snapShot else {
             completionHandler(nil)
+          
             return
         }
         
@@ -33,9 +34,11 @@ func downloadBasketFromFirebase(ownerId : String ,  completionHandler : @escapin
             
             let basket  = Basket(_dictionary: snapShot.documents.first!.data() as NSDictionary)
             completionHandler(basket)
+        
         }
         else {
             completionHandler(nil)
+            
         }
         
     }
