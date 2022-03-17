@@ -106,16 +106,32 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right  else  {return nil}
         let deletAction = SwipeAction(style: .destructive, title: nil) { action, indexPath in
-            print("deleting")
+            print(indexPath.row)
+            
+            let itemToDelete = self.itemsArray[indexPath.row]
             self.itemsArray.remove(at: indexPath.row)
-            
-            
+            self.removeItemFromBasket(itemId: itemToDelete.id)
+            updateBasketInFireBase(self.basket!, withValues: ["itemIds" : self.basket!.itemdIds!]) { error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                }
+            }
+    
             
         }
         
         deletAction.image  = UIImage(named: "delete")
         configure(action: deletAction, with: .trash)
         return [deletAction]
+    }
+    
+    func  removeItemFromBasket(itemId : String) {
+        for  i  in 0..<basket!.itemdIds.count{
+            if itemId == basket?.itemdIds[i] {
+                basket!.itemdIds.remove(at: i)
+            }
+            return
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

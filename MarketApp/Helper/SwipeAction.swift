@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import UIKit
 enum ActionDescriptor {
     case read, unread, more, flag, trash
     
