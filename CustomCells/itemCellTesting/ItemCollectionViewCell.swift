@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ItemCollectionViewCell: UICollectionViewCell {
+class ItemCollectionViewCell: SwipeCollectionViewCell {
 
     @IBOutlet weak var itemLableName: UILabel!
     

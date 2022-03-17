@@ -7,8 +7,10 @@
 
 import UIKit
 import JGProgressHUD
+import SwipeCellKit
 
-class BasketViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class BasketViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, SwipeCollectionViewCellDelegate {
+  
     
     var basket : Basket?
     var itemsArray:[Item] = []
@@ -31,18 +33,29 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
     }
     
+    
+    func getBasketItems()  {
+        
+        
+        
+    }
+    
+    fileprivate func loadItems() {
+        if basket != nil {
+            downloadItemsFromFirebase(withItemIds: basket!.itemdIds) { itemsArray in
+                self.itemsArray = itemsArray
+                self.countLable.text = String (itemsArray.count)
+                self.calcuteBasketPrice()
+                self.ItemsBasketCollectionView.reloadData()
+            }
+        }
+    }
+    
     func loadBasket() {
         downloadBasketFromFirebase(ownerId: "1234") { basket in
             self.basket = basket
-            
-            if basket != nil {
-                downloadItemsFromFirebase(withItemIds: basket!.itemdIds) { itemsArray in
-                    self.itemsArray = itemsArray
-                    self.countLable.text = String (itemsArray.count)
-                    self.calcuteBasketPrice()
-                    self.ItemsBasketCollectionView.reloadData()
-                }
-            }
+            self.loadItems()
+           
            
         }
     }
@@ -71,25 +84,75 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsArray.count
     }
+   
+    
+
+//    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+//
+//    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "testCell", for: indexPath) as! ItemCollectionViewCell
         cell.configureItemCellTest(item: itemsArray[indexPath.row])
-        cell.backgroundColor = .gray
+        cell.backgroundColor = .white
+        cell.delegate = self
         return  cell
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right  else  {return nil}
+        let deletAction = SwipeAction(style: .destructive, title: nil) { action, indexPath in
+            print("deleting")
+            self.itemsArray.remove(at: indexPath.row)
+            
+            
+            
+        }
+        
+        deletAction.image  = UIImage(named: "delete")
+        configure(action: deletAction, with: .trash)
+        return [deletAction]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var option = SwipeOptions()
+        option.expansionStyle =  orientation == .left ? .selection  :.destructive
+        option.backgroundColor  =  .white
+        
+        return option
+    }
+    
+    
+    
+    
+    
     
     @IBOutlet weak var ItemsBasketCollectionView: UICollectionView!
     
-   
-    
-    
-    
+}
 
-    
 
+var defaultOptions = SwipeOptions()
+var isSwipeRightEnabled = true
+var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
+var buttonStyle: ButtonStyle = .backgroundColor
+var usesTallCells = false
+
+func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
+    action.title = descriptor.title(forDisplayMode: buttonDisplayMode)
+    action.image = descriptor.image(forStyle: buttonStyle, displayMode: buttonDisplayMode)
+    
+    switch buttonStyle {
+    case .backgroundColor:
+        action.backgroundColor = descriptor.color(forStyle: buttonStyle)
+    case .circular:
+        action.backgroundColor = .clear
+        action.textColor = descriptor.color(forStyle: buttonStyle)
+        action.font = .systemFont(ofSize: 13)
+        action.transitionDelegate = ScaleTransition.default
+    }
 }
