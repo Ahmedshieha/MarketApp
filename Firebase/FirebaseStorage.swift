@@ -33,8 +33,7 @@ func uploadImages (images : [UIImage?], itemId : String , completionHandler : @e
                         
                     }
                 }
-                
-                
+               
             }
             
             nameSuffix += 1
@@ -72,11 +71,7 @@ func saveImagesToFirebase(imageData : Data , fileName : String , completionHandl
             }
             completionHandler(downloadUrl.absoluteString)
         }
-        
-        
     })
-    
-    
 }
 
 func downloadImages  (imageLinks : [String] , completionHandler : @escaping (_ images : [UIImage])-> Void ) {

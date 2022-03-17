@@ -11,7 +11,7 @@ class ItemsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemNameLable: UILabel!
-    @IBOutlet weak var itemPriceLable: UILabel!
+    @IBOutlet weak var itemPriceLable: UILabel?
     @IBOutlet weak var itemDescriptionLable: UILabel!
     
     
@@ -30,8 +30,14 @@ class ItemsTableViewCell: UITableViewCell {
     func configureItemCell (item : Item) {
         itemNameLable.text = item.name
         itemDescriptionLable.text = item.description
-        itemPriceLable.text? = "$" + convertToCurrency(item.price) 
-        itemPriceLable.adjustsFontSizeToFitWidth = true
+        
+        if item.price != nil {
+            itemPriceLable?.text = "$" + convertToCurrency(item.price)
+        } else {
+            itemPriceLable?.text =  "$" + "0.0"
+        }
+        
+        itemPriceLable?.adjustsFontSizeToFitWidth = true
         
     }
 

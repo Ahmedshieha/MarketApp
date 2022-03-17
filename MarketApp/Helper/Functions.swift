@@ -8,9 +8,11 @@
 import Foundation
 
 func convertToCurrency (_ number : Double ) -> String {
-    let currancyFormatter = NumberFormatter()
-    currancyFormatter.usesGroupingSeparator = true
-    currancyFormatter.numberStyle =  .decimal
-    currancyFormatter.locale = Locale.current
-    return currancyFormatter.string(from: NSNumber(value: number))!
+   
+        let currancyFormatter = NumberFormatter()
+        currancyFormatter.usesGroupingSeparator = true
+        currancyFormatter.numberStyle =  .decimal
+        currancyFormatter.locale = Locale.current
+        return currancyFormatter.string(from: NSNumber(value: number ))!
+    
 }

@@ -22,12 +22,13 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
        
         // Do any additional setup after loading the view.
        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadBasket()
-       
+        
     }
     
     func loadBasket() {
@@ -37,17 +38,35 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
             if basket != nil {
                 downloadItemsFromFirebase(withItemIds: basket!.itemdIds) { itemsArray in
                     self.itemsArray = itemsArray
+                    self.countLable.text = String (itemsArray.count)
+                    self.calcuteBasketPrice()
                     self.ItemsBasketCollectionView.reloadData()
                 }
             }
            
         }
     }
+    @IBOutlet weak var totalInBasketLable: UILabel!
+    
+    func calcuteBasketPrice () {
+        
+        var newArray : [Double] = []
+        for item in itemsArray {
+            if itemsArray.count > 0 {
+                let itemPrice = item.price!
+                newArray.append(itemPrice)
+            }
+        }
+        let sum = newArray.reduce(0, +)
+        self.totalInBasketLable.text = " $ \(sum)"
+    }
     
     @IBOutlet weak var itemsCountLable: UILabel!
+    @IBOutlet weak var countLable: UILabel!
     
     @IBAction func checkOutButton(_ sender: Any) {
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsArray.count
