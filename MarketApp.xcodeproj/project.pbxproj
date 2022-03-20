@@ -35,6 +35,7 @@
 		FA776B5127E149E80080FA4B /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA776B4F27E149E80080FA4B /* ItemCollectionViewCell.swift */; };
 		FA776B5227E149E80080FA4B /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA776B5027E149E80080FA4B /* ItemCollectionViewCell.xib */; };
 		FA776B5627E3ECB40080FA4B /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA776B5527E3ECB40080FA4B /* SwipeAction.swift */; };
+		FA776B5A27E757090080FA4B /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA776B5927E757090080FA4B /* ItemsViewController.swift */; };
 		FAC1FADB27734AEE00B3BDC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC1FADA27734AEE00B3BDC7 /* GoogleService-Info.plist */; };
 		FAC1FADD27734B4B00B3BDC7 /* FirebaseRefrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC1FADC27734B4B00B3BDC7 /* FirebaseRefrence.swift */; };
 		FAC1FADF27734C7800B3BDC7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC1FADE27734C7800B3BDC7 /* Category.swift */; };
@@ -103,6 +104,7 @@
 		FA776B4F27E149E80080FA4B /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA776B5027E149E80080FA4B /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA776B5527E3ECB40080FA4B /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
+		FA776B5927E757090080FA4B /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		FAC1FADA27734AEE00B3BDC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAC1FADC27734B4B00B3BDC7 /* FirebaseRefrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRefrence.swift; sourceTree = "<group>"; };
 		FAC1FADE27734C7800B3BDC7 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				FA66212B27789652005F15C2 /* ItemsTableViewController.swift */,
 				FA33A74C27DE48F90052785B /* ItemDetailsViewController.swift */,
 				FA776B4C27E1490A0080FA4B /* BasketViewController.swift */,
+				FA776B5927E757090080FA4B /* ItemsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				FA33A74D27DE48F90052785B /* ItemDetailsViewController.swift in Sources */,
 				FA33A74227DBE8200052785B /* HomeCollectionViewCell.swift in Sources */,
 				FA776B4B27E1021C0080FA4B /* DownloadBasket.swift in Sources */,
+				FA776B5A27E757090080FA4B /* ItemsViewController.swift in Sources */,
 				FA153A462782606300F6C02A /* FirebaseStorage.swift in Sources */,
 				FA33A6FC27D662980052785B /* activityIndicator.swift in Sources */,
 				FACB60DD27C82B96009138C7 /* GetCategories.swift in Sources */,

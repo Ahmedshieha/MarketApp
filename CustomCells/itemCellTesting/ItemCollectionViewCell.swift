@@ -11,10 +11,7 @@ import SwipeCellKit
 class ItemCollectionViewCell: SwipeCollectionViewCell {
 
     @IBOutlet weak var itemLableName: UILabel!
-    
-    
     @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var itemNameLable: UILabel!
     @IBOutlet weak var itemPriceLable: UILabel!
     @IBOutlet weak var itemDescriptionLable: UILabel!
     override func awakeFromNib() {

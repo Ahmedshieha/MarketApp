@@ -34,12 +34,6 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     
-    func getBasketItems()  {
-        
-        
-        
-    }
-    
     fileprivate func loadItems() {
         if basket != nil {
             downloadItemsFromFirebase(withItemIds: basket!.itemdIds) { itemsArray in

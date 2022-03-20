@@ -73,7 +73,6 @@
                 <outlet property="itemDescriptionLable" destination="YnD-1g-wad" id="BFs-K9-7hr"/>
                 <outlet property="itemImage" destination="Joc-82-4rF" id="0A3-tv-lbG"/>
                 <outlet property="itemLableName" destination="aA7-Ub-1B5" id="al2-FZ-CZm"/>
-                <outlet property="itemNameLable" destination="aA7-Ub-1B5" id="zkT-he-Vya"/>
                 <outlet property="itemPriceLable" destination="wzx-ct-bQp" id="et2-Yf-CWs"/>
             </connections>
             <point key="canvasLocation" x="197.82608695652175" y="92.745535714285708"/>

@@ -94,18 +94,29 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         if indexPath.section == 1 {
-            performSegue(withIdentifier: "categoryToItemsSeg", sender: categoryArray[indexPath.row])
+//            performSegue(withIdentifier: "categoryToItemsSeg", sender: categoryArray[indexPath.row])
+//            print(categoryArray[indexPath.row].name)
+
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "itemsViewController")as! ItemsViewController
+            vc.category = categoryArray[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+           
         }
+
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "categoryToItemsSeg" {
-            let vc = segue.destination as! ItemsTableViewController
-            vc.category = (sender as! Category)
-            
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "categoryToItemsSeg" {
+//            let vc = segue.destination as! ItemsViewController
+//            vc.category = (sender as! Category)
+//        }
+//
+//
+//    }
+//
+  
     
     func createCompostionalLayout () -> UICollectionViewCompositionalLayout {
         
