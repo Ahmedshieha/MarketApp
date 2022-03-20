@@ -27,8 +27,6 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         
     }
     
-    
-    
     func downloadCategories() {
         downloadCategoriesFromFirebase { categories in
             self.categoryArray = categories
@@ -107,17 +105,7 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         }
 
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "categoryToItemsSeg" {
-//            let vc = segue.destination as! ItemsViewController
-//            vc.category = (sender as! Category)
-//        }
-//
-//
-//    }
-//
-  
-    
+
     func createCompostionalLayout () -> UICollectionViewCompositionalLayout {
         
         return UICollectionViewCompositionalLayout {( sectionNumber , env ) -> NSCollectionLayoutSection? in

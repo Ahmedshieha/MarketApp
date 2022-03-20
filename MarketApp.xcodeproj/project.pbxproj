@@ -16,7 +16,6 @@
 		FA1F4EE027CCFA18003DCB24 /* GetItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F4EDF27CCFA18003DCB24 /* GetItems.swift */; };
 		FA1F4EE227CD3132003DCB24 /* ItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1F4EE127CD3132003DCB24 /* ItemsTableViewCell.swift */; };
 		FA33A6FA27D659990052785B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A6F927D659990052785B /* Extensions.swift */; };
-		FA33A6FC27D662980052785B /* activityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A6FB27D662980052785B /* activityIndicator.swift */; };
 		FA33A6FE27D673850052785B /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A6FD27D673850052785B /* Functions.swift */; };
 		FA33A73F27DBE7900052785B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A73E27DBE7900052785B /* HomeViewController.swift */; };
 		FA33A74227DBE8200052785B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A74027DBE8200052785B /* HomeCollectionViewCell.swift */; };
@@ -26,7 +25,6 @@
 		FA33A74D27DE48F90052785B /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A74C27DE48F90052785B /* ItemDetailsViewController.swift */; };
 		FA33A75727DE4A460052785B /* ItemImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33A75527DE4A460052785B /* ItemImagesCollectionViewCell.swift */; };
 		FA33A75827DE4A460052785B /* ItemImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA33A75627DE4A460052785B /* ItemImagesCollectionViewCell.xib */; };
-		FA66212C27789652005F15C2 /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66212B27789652005F15C2 /* ItemsTableViewController.swift */; };
 		FA66212E2778B542005F15C2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66212D2778B542005F15C2 /* Item.swift */; };
 		FA776B4427E0FCCE0080FA4B /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA776B4327E0FCCE0080FA4B /* Basket.swift */; };
 		FA776B4627E0FEA10080FA4B /* SaveToBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA776B4527E0FEA10080FA4B /* SaveToBasket.swift */; };
@@ -85,7 +83,6 @@
 		FA1F4EDF27CCFA18003DCB24 /* GetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetItems.swift; sourceTree = "<group>"; };
 		FA1F4EE127CD3132003DCB24 /* ItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewCell.swift; sourceTree = "<group>"; };
 		FA33A6F927D659990052785B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		FA33A6FB27D662980052785B /* activityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityIndicator.swift; sourceTree = "<group>"; };
 		FA33A6FD27D673850052785B /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FA33A73E27DBE7900052785B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FA33A74027DBE8200052785B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +92,6 @@
 		FA33A74C27DE48F90052785B /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		FA33A75527DE4A460052785B /* ItemImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA33A75627DE4A460052785B /* ItemImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemImagesCollectionViewCell.xib; sourceTree = "<group>"; };
-		FA66212B27789652005F15C2 /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		FA66212D2778B542005F15C2 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FA776B4327E0FCCE0080FA4B /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		FA776B4527E0FEA10080FA4B /* SaveToBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToBasket.swift; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 			children = (
 				FA33A73E27DBE7900052785B /* HomeViewController.swift */,
 				FAEEC4E1277343F90083EFD8 /* AddItemViewController.swift */,
-				FA66212B27789652005F15C2 /* ItemsTableViewController.swift */,
 				FA33A74C27DE48F90052785B /* ItemDetailsViewController.swift */,
 				FA776B4C27E1490A0080FA4B /* BasketViewController.swift */,
 				FA776B5927E757090080FA4B /* ItemsViewController.swift */,
@@ -290,7 +285,6 @@
 				FA153A41277FAB7700F6C02A /* Constants.swift */,
 				FA153A4327825FD000F6C02A /* Rechabilty.swift */,
 				FA33A6F927D659990052785B /* Extensions.swift */,
-				FA33A6FB27D662980052785B /* activityIndicator.swift */,
 				FA33A6FD27D673850052785B /* Functions.swift */,
 				FA776B5527E3ECB40080FA4B /* SwipeAction.swift */,
 			);
@@ -626,7 +620,6 @@
 				FA776B4427E0FCCE0080FA4B /* Basket.swift in Sources */,
 				FA33A75727DE4A460052785B /* ItemImagesCollectionViewCell.swift in Sources */,
 				FA776B5127E149E80080FA4B /* ItemCollectionViewCell.swift in Sources */,
-				FA66212C27789652005F15C2 /* ItemsTableViewController.swift in Sources */,
 				FA153A42277FAB7700F6C02A /* Constants.swift in Sources */,
 				FAEEC4E2277343F90083EFD8 /* AddItemViewController.swift in Sources */,
 				FAEEC4DE277343F90083EFD8 /* AppDelegate.swift in Sources */,
@@ -638,7 +631,6 @@
 				FA776B4B27E1021C0080FA4B /* DownloadBasket.swift in Sources */,
 				FA776B5A27E757090080FA4B /* ItemsViewController.swift in Sources */,
 				FA153A462782606300F6C02A /* FirebaseStorage.swift in Sources */,
-				FA33A6FC27D662980052785B /* activityIndicator.swift in Sources */,
 				FACB60DD27C82B96009138C7 /* GetCategories.swift in Sources */,
 				FAEEC4E0277343F90083EFD8 /* SceneDelegate.swift in Sources */,
 			);

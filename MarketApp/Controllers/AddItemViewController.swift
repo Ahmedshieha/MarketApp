@@ -8,7 +8,7 @@
 import UIKit
 import Gallery
 import JGProgressHUD
-import NVActivityIndicatorView
+
 
 class AddItemViewController: UIViewController {
     var category:Category?
@@ -21,7 +21,7 @@ class AddItemViewController: UIViewController {
     
     var gallery : GalleryController!
     let hud = JGProgressHUD(style: .dark)
-    var activityIndicator : NVActivityIndicatorView?
+  
     var itemImges : [UIImage?] = []
     
     override func viewDidLoad() {
@@ -35,10 +35,7 @@ class AddItemViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        activityIndicator = NVActivityIndicatorView(frame: CGRect(x: self.view.frame.width / 2 - 30  , y: self.view.frame.height / 2 - 30 , width: 50, height: 50), type: .lineSpinFadeLoader, color: .lightGray, padding: nil)
         hud.textLabel.text = "Loading"
-        
     }
     
     

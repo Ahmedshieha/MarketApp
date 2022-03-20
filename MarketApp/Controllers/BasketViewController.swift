@@ -20,17 +20,18 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ItemsBasketCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "testCell")
-        
-        // Do any additional setup after loading the view.
-        
-        
+        self.ItemsBasketCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
+        ItemsBasketCollectionView.collectionViewLayout = createCompostionalLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadBasket()
+//        loadBasket()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadBasket()
     }
     
     
@@ -38,24 +39,27 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         if basket != nil {
             downloadItemsFromFirebase(withItemIds: basket!.itemdIds) { itemsArray in
                 self.itemsArray = itemsArray
-                self.countLable.text = String (itemsArray.count)
-                self.calcuteBasketPrice()
+                self.updateTotalLables()
                 self.ItemsBasketCollectionView.reloadData()
             }
         }
     }
     
-    func loadBasket() {
+   private func loadBasket() {
         downloadBasketFromFirebase(ownerId: "1234") { basket in
             self.basket = basket
             self.loadItems()
-            
-            
         }
     }
+    
     @IBOutlet weak var totalInBasketLable: UILabel!
     
-    func calcuteBasketPrice () {
+    private func updateTotalLables () {
+        calcuteBasketPrice()
+        self.countLable.text = String(itemsArray.count)
+    }
+    
+   private func calcuteBasketPrice () {
         
         var newArray : [Double] = []
         for item in itemsArray {
@@ -78,20 +82,17 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsArray.count
     }
-    
-    
-    
-    //    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
-    //
-    //    }
-    
+ 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "testCell", for: indexPath) as! ItemCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell
         cell.configureItemCellTest(item: itemsArray[indexPath.row])
         cell.backgroundColor = .white
         cell.delegate = self
+        cell.backgroundColor = .lightGray
+        cell.itemImage.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 10
         return  cell
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -110,6 +111,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
                 if error != nil {
                     print(error!.localizedDescription)
                 }
+                self.updateTotalLables()
             }
         }
         
@@ -118,7 +120,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         return [deletAction]
     }
     
-    func  removeItemFromBasket(itemId : String) {
+   private func  removeItemFromBasket(itemId : String) {
         for  i  in 0..<basket!.itemdIds.count{
             if itemId == basket?.itemdIds[i] {
                 basket!.itemdIds.remove(at: i)
@@ -142,16 +144,40 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
     }
     
-    
-    
-    
-    
-    
     @IBOutlet weak var ItemsBasketCollectionView: UICollectionView!
+    
+    
+    private func createCompostionalLayout () -> UICollectionViewCompositionalLayout {
+        
+        return UICollectionViewCompositionalLayout {( sectionNumber , env ) -> NSCollectionLayoutSection? in
+            
+            if sectionNumber ==  0 {
+                return self.itemsLayoutSection()
+            }
+            return self.itemsLayoutSection()
+        }
+     
+    }
+    private func itemsLayoutSection () -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+         
+         item.contentInsets = .init(top: 2, leading: 2, bottom: 2, trailing: 2)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.15))
+         
+         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+         group.contentInsets = .init(top: 5 , leading: 5, bottom: 5, trailing: 5)
+         
+         let section = NSCollectionLayoutSection(group: group)
+         section.orthogonalScrollingBehavior  = .none
+         
+         return section
+         
+     }
     
 }
 
-
+//Mark : swipe Action
 var defaultOptions = SwipeOptions()
 var isSwipeRightEnabled = true
 var buttonDisplayMode: ButtonDisplayMode = .titleAndImage
