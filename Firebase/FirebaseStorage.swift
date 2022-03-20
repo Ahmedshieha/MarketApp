@@ -75,7 +75,6 @@ func saveImagesToFirebase(imageData : Data , fileName : String , completionHandl
 }
 
 func downloadImages  (imageLinks : [String] , completionHandler : @escaping (_ images : [UIImage])-> Void ) {
-    
     var imageArray : [UIImage] = []
     var imagesLinkCount  =   0
     
@@ -99,9 +98,7 @@ func downloadImages  (imageLinks : [String] , completionHandler : @escaping (_ i
             }
             
         }
-        
     }
-    
 }
 
 

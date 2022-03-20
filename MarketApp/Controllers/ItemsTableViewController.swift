@@ -62,7 +62,9 @@ class ItemsTableViewController: UITableViewController {
         let vc = UIStoryboard(name: "Main", bundle: nil)
         let itemDetailsViewController = vc.instantiateViewController(withIdentifier: "ItemDetailsViewController")  as? ItemDetailsViewController
         itemDetailsViewController?.item = items[indexPath.row]
+        itemDetailsViewController?.showRightButton()
         self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
+       
         
         
         

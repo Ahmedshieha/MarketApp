@@ -10,7 +10,7 @@ import JGProgressHUD
 import SwipeCellKit
 
 class BasketViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, SwipeCollectionViewCellDelegate {
-  
+    
     
     var basket : Basket?
     var itemsArray:[Item] = []
@@ -19,11 +19,11 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.ItemsBasketCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "testCell")
-       
+        
         // Do any additional setup after loading the view.
-       
+        
         
     }
     
@@ -55,8 +55,8 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         downloadBasketFromFirebase(ownerId: "1234") { basket in
             self.basket = basket
             self.loadItems()
-           
-           
+            
+            
         }
     }
     @IBOutlet weak var totalInBasketLable: UILabel!
@@ -84,12 +84,12 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemsArray.count
     }
-   
     
-
-//    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
-//
-//    }
+    
+    
+    //    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+    //
+    //    }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -105,9 +105,10 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right  else  {return nil}
+        print("indexPathone\(indexPath.row)")
+        
         let deletAction = SwipeAction(style: .destructive, title: nil) { action, indexPath in
-            print(indexPath.row)
-            
+            print("indexPathtwo\(indexPath.row)")
             let itemToDelete = self.itemsArray[indexPath.row]
             self.itemsArray.remove(at: indexPath.row)
             self.removeItemFromBasket(itemId: itemToDelete.id)
@@ -116,8 +117,6 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
                     print(error!.localizedDescription)
                 }
             }
-    
-            
         }
         
         deletAction.image  = UIImage(named: "delete")
@@ -129,8 +128,8 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         for  i  in 0..<basket!.itemdIds.count{
             if itemId == basket?.itemdIds[i] {
                 basket!.itemdIds.remove(at: i)
+                return
             }
-            return
         }
     }
     
@@ -140,6 +139,13 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         option.backgroundColor  =  .white
         
         return option
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let itemDetailsViewController = vc.instantiateViewController(withIdentifier: "ItemDetailsViewController")  as? ItemDetailsViewController
+        itemDetailsViewController?.item = itemsArray[indexPath.row]
+        self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
     }
     
     
