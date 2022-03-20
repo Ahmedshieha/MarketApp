@@ -27,13 +27,12 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        loadBasket()
-        
+        ItemsBasketCollectionView.backgroundColor = .white
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadBasket()
     }
-    
     
     fileprivate func loadItems() {
         if basket != nil {
@@ -74,7 +73,6 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     @IBOutlet weak var itemsCountLable: UILabel!
     @IBOutlet weak var countLable: UILabel!
-    
     @IBAction func checkOutButton(_ sender: Any) {
     }
     
@@ -83,7 +81,6 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         return itemsArray.count
     }
  
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell
@@ -100,10 +97,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right  else  {return nil}
-        print("indexPathone\(indexPath.row)")
-        
         let deletAction = SwipeAction(style: .destructive, title: nil) { action, indexPath in
-            print("indexPathtwo\(indexPath.row)")
             let itemToDelete = self.itemsArray[indexPath.row]
             self.itemsArray.remove(at: indexPath.row)
             self.removeItemFromBasket(itemId: itemToDelete.id)

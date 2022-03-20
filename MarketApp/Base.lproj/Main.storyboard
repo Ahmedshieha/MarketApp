@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7T0-Y7-b0P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1120" y="29"/>
+            <point key="canvasLocation" x="-888" y="29"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="hU0-6y-DYK">
@@ -212,18 +212,18 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs6-xD-c5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1791" y="14"/>
+            <point key="canvasLocation" x="-2091" y="29"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="OXm-QO-9jf">
             <objects>
-                <viewController id="OH5-QW-sRu" customClass="AddItemViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddItemViewController" id="OH5-QW-sRu" customClass="AddItemViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hzb-59-j3j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ST6-AT-pdh">
-                                <rect key="frame" x="20" y="64" width="374" height="34"/>
+                                <rect key="frame" x="20" y="108" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="BBf-pZ-ngm"/>
                                 </constraints>
@@ -231,7 +231,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hm-07-BQS">
-                                <rect key="frame" x="20" y="123" width="374" height="34"/>
+                                <rect key="frame" x="20" y="167" width="374" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="A8C-5B-hdA"/>
                                 </constraints>
@@ -239,7 +239,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3t2-aJ-DNl">
-                                <rect key="frame" x="20" y="182" width="374" height="161"/>
+                                <rect key="frame" x="20" y="226" width="374" height="161"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="161" id="JbN-rd-S6E"/>
@@ -249,7 +249,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEF-rH-L8b">
-                                <rect key="frame" x="161" y="388.5" width="92" height="31"/>
+                                <rect key="frame" x="161" y="432.5" width="92" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Add photo">
                                     <backgroundConfiguration key="background">
@@ -304,7 +304,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2786" y="747"/>
+            <point key="canvasLocation" x="21.739130434782609" y="1516.7410714285713"/>
         </scene>
         <!--Home-->
         <scene sceneID="Xjp-dW-bcW">
@@ -415,7 +415,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyF-jP-Xdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2131.8840579710145" y="1483.9285714285713"/>
+            <point key="canvasLocation" x="795.6521739130435" y="1516.7410714285713"/>
         </scene>
         <!--Basket-->
         <scene sceneID="wrf-4Z-Pba">
@@ -434,7 +434,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iw0-of-xEO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3003" y="747"/>
+            <point key="canvasLocation" x="-2899" y="747"/>
         </scene>
         <!--Items View Controller-->
         <scene sceneID="JBa-HT-XIa">
@@ -495,7 +495,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGg-NQ-sIy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3004" y="1517"/>
+            <point key="canvasLocation" x="-2899" y="1517"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="VY0-PJ-kVn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hkG-Re-bgz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qK5-vv-HAV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="OH5-QW-sRu" kind="relationship" relationship="rootViewController" id="D6j-MG-cJR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgl-fx-9A4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-888.40579710144937" y="1516.7410714285713"/>
         </scene>
     </scenes>
     <resources>

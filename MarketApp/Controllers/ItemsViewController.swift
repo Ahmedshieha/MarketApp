@@ -20,8 +20,20 @@ class ItemsViewController: UIViewController,UICollectionViewDelegate,UICollectio
         // Do any additional setup after loading the view.
         self.itemsCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
         itemsCollectionView.collectionViewLayout = createCompostionalLayout()
-        downloadItems()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .plain, target: self, action: #selector(self.addItemButton))
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        downloadItems()
+    }
+    
+    @objc func addItemButton () {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "AddItemViewController")as! AddItemViewController
+        vc.category = category
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -42,7 +54,7 @@ class ItemsViewController: UIViewController,UICollectionViewDelegate,UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemCollectionViewCell
         cell.configureItemCellTest(item: items[indexPath.row])
         cell.backgroundColor = .lightGray
-        cell.itemImage.layer.cornerRadius = 10 
+        cell.itemImage.layer.cornerRadius = 10
         cell.layer.cornerRadius = 10
         return cell
     }

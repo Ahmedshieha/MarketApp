@@ -13,7 +13,6 @@ import JGProgressHUD
 class AddItemViewController: UIViewController {
     var category:Category?
     
-    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var addPhotoButton: UIButton!
@@ -72,14 +71,12 @@ class AddItemViewController: UIViewController {
     }
     func saveItem() {
         hud.show(in: self.view)
-        //        showLoadingIndicator()
         let item = Item()
         item.id = UUID().uuidString
         item.name = titleTextField.text!
         item.description = descriptionTextView.text
         item.categoryId = category?.id
         item.price = Double(priceTextField.text!.replacedArabicDigitsWithEnglish)
-        
         if itemImges.count > 0 {
             uploadImages(images: itemImges, itemId: item.id) {imageLinks in
                 
@@ -87,7 +84,6 @@ class AddItemViewController: UIViewController {
                 saveItemToFirebase(item: item)
                 self.popView()
                 self.hud.dismiss()
-                //                self.hideLoadingIndicator()
             }
             
         }
@@ -113,21 +109,7 @@ class AddItemViewController: UIViewController {
         self.present(self.gallery, animated: true, completion: nil)
     }
     
-//
-//    func showLoadingIndicator () {
-//
-//        if activityIndicator != nil {
-//            self.view.addSubview(activityIndicator!)
-//            activityIndicator?.startAnimating()
-//        }
-//    }
-//
-//    func hideLoadingIndicator() {
-//        if activityIndicator != nil {
-//            activityIndicator!.removeFromSuperview()
-//            activityIndicator!.stopAnimating()
-//        }
-//    }
+
 }
 extension AddItemViewController : GalleryControllerDelegate {
     func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {

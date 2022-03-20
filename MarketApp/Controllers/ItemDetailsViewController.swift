@@ -41,7 +41,6 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
     
     
     
-    
     func downloadItemImages () {
         
         if item != nil && item.imageLinks != nil {
