@@ -110,14 +110,21 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
     
     func addToBasketButton () {
         
-        downloadBasketFromFirebase(ownerId: "1234") { basket in
-            if basket == nil {
-                self.createNewBasket()
-            } else {
-                basket?.itemdIds.append(self.item.id)
-                self.updateBasket(basket: basket!, withValues: ["itemIds":basket!.itemdIds!])
-            }
-        }
+//        downloadBasketFromFirebase(ownerId: "1234") { basket in
+//            if basket == nil {
+//                self.createNewBasket()
+//            } else {
+//                basket?.itemdIds.append(self.item.id)
+//                self.updateBasket(basket: basket!, withValues: ["itemIds":basket!.itemdIds!])
+//            }
+//        }
+        self.showLoginView()
+    }
+    
+    func showLoginView() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func configureSuccessIndeicator() {
@@ -167,9 +174,7 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
             }
             return self.imagesLayoutSection()
         }
-        
     }
-    
 }
 
 
