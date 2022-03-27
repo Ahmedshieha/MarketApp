@@ -202,6 +202,22 @@
             </objects>
             <point key="canvasLocation" x="-2091" y="747"/>
         </scene>
+        <!--Profile-->
+        <scene sceneID="40p-MX-Nil">
+            <objects>
+                <viewController id="Ope-kF-rr0" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OdG-qg-EHc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hZY-tr-NjG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="HVx-K8-Szo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugb-0t-CPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3616" y="30"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xxc-ZR-3dO">
             <objects>
@@ -215,6 +231,7 @@
                         <segue destination="8LI-V5-7yi" kind="relationship" relationship="viewControllers" id="zQD-dd-Rt7"/>
                         <segue destination="qbo-9D-taF" kind="relationship" relationship="viewControllers" id="LdT-dj-afV"/>
                         <segue destination="vOs-sm-odK" kind="relationship" relationship="viewControllers" id="2UE-wm-JDH"/>
+                        <segue destination="Ope-kF-rr0" kind="relationship" relationship="viewControllers" id="Dlc-n4-KYf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs6-xD-c5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -527,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqg-vB-WvE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4928.985507246377" y="325.44642857142856"/>
+            <point key="canvasLocation" x="796" y="747"/>
         </scene>
         <!--Basket-->
         <scene sceneID="wrf-4Z-Pba">
@@ -631,6 +648,7 @@
     <resources>
         <image name="basket" width="30" height="30"/>
         <image name="homeIcon" width="30" height="30"/>
+        <image name="profile" width="30" height="30"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

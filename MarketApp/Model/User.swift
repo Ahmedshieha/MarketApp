@@ -100,6 +100,7 @@ class MUSer  {
         Auth.auth().signIn(withEmail: email, password: password) { authDataResult, error in
             if error == nil {
                 if authDataResult!.user.isEmailVerified {
+                    downloadUserFromFireBase(userId: authDataResult!.user.uid, email: email)
                     completion(error , true)
                 } else {
                     print("email is not verified")
@@ -111,16 +112,81 @@ class MUSer  {
         }
     }
     
+    class func resetPassword(email : String , completion : @escaping (_ error : Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error == nil {
+                
+            }
+            else {
+                
+            }
+        }
+    }
+    class func resendEmailVerification(email: String , completionHandler : @escaping (_ error : Error? ) -> Void) {
+        Auth.auth().currentUser?.reload(completion: { error in
+            Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+                completionHandler(error)
+            })
+        })
+    }
+    
     class func registerUserWith(email:String, password:String, completion:@escaping(_ error:Error?)->Void){
         Auth.auth().createUser(withEmail: email, password: password) { authDataResult, error in
             completion(error)
             if error == nil {
-                
-//                sendEmailVerification
+                downloadUserFromFireBase(userId: authDataResult!.user.uid, email: email)
                 authDataResult?.user.sendEmailVerification(completion: { error in
-                    print("auth email verification error \(error?.localizedDescription)")
+                    if error == nil {
+                        
+                    }
+                    else {
+                        
+                    }
                 })
+            } else {
+                
             }
         }
     }
+}
+
+func convertUserToDictionary (user : MUSer) -> NSDictionary {
+    return NSDictionary(objects: [user.objectId,user.email,user.firstName,user.lastName,user.fullName,user.fullAddress ?? "",user.onBoard,user.purchasedItems], forKeys: ["objectId" as NSCopying,"email" as NSCopying,"firstName" as NSCopying,"lastName" as NSCopying,"fullName" as NSCopying,"fullAddress" as NSCopying,"onBoard" as NSCopying,"purchasedItems" as NSCopying,])
+    
+}
+
+func saveUserToFireBase(user : MUSer) {
+    FirebaseCollectionRefrence(.User).document(user.objectId).setData(convertUserToDictionary(user: user) as! [String:Any]) { error in
+        if error == nil {
+            
+        }
+        else {
+            print(error!.localizedDescription)
+        }
+    }
+}
+func saveUserLocally (userDictionary : NSDictionary) {
+    UserDefaults.standard.set(userDictionary, forKey: "currentUser")
+    UserDefaults.standard.synchronize()
+}
+
+func downloadUserFromFireBase(userId :String , email :String) {
+    FirebaseCollectionRefrence(.User).document(userId).getDocument { snapShot, error in
+        
+        guard let snapShot = snapShot else {
+            return
+        }
+        if snapShot.exists {
+            print("download Current User From firestore")
+            saveUserLocally(userDictionary: snapShot.data()! as NSDictionary)
+        }
+        else {
+            let user = MUSer(_objectId: userId, _email: email, _firstName: "", _lastName: "")
+           saveUserLocally(userDictionary: convertUserToDictionary(user: user ))
+            saveUserToFireBase(user: user)
+            
+            
+        }
+    }
+    
 }

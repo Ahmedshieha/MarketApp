@@ -11,7 +11,7 @@ class LoginViewController: UIViewController {
     
     
     let hud = JGProgressHUD(style: .dark)
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +31,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
         if isTextFieldsNotEmpty() {
-             
+            login(withEmail: emailTextField.text!, withPassword: passwordTextField.text!)
+            
         }else {
             self.hud.textLabel.text = "all fields are required"
             self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
@@ -56,10 +57,25 @@ class LoginViewController: UIViewController {
         dismissView()
     }
     @IBAction func forgetPassword(_ sender: Any) {
+        if emailTextField.text != "" {
+            MUSer.resetPassword(email: emailTextField.text!) { error in
+                print(error?.localizedDescription)
+            }
+        }
         
     }
     
     @IBAction func resendEmail(_ sender: Any) {
+        if isTextFieldsNotEmpty() {
+            MUSer.resendEmailVerification(email: emailTextField.text!) { error in
+                if error == nil {
+                    
+                }
+                else {
+                    print(error!.localizedDescription)
+                }
+            }
+        }
         
     }
     
@@ -73,6 +89,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 if isEmailVerified {
                     self.dismissView()
+                    print("succefull loging ")
                 } else {
                     self.hud.textLabel.text = "please verify your Email"
                     self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
@@ -80,7 +97,7 @@ class LoginViewController: UIViewController {
                     self.hud.dismiss(afterDelay: 2.0)
                 }
             } else {
-                self.hud.textLabel.text = "error\(error!.localizedDescription)"
+                self.hud.textLabel.text = "\(error!.localizedDescription)"
                 self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 self.hud.show(in: self.view)
                 self.hud.dismiss(afterDelay: 2.0)
@@ -110,6 +127,4 @@ class LoginViewController: UIViewController {
     private func isTextFieldsNotEmpty()-> Bool{
         return(emailTextField.text !=  "" && passwordTextField.text != "")
     }
-    
-    
 }
