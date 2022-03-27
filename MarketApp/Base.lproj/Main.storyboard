@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7T0-Y7-b0P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-888" y="29"/>
+            <point key="canvasLocation" x="21.739130434782609" y="28.794642857142854"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="hU0-6y-DYK">
@@ -205,18 +205,95 @@
         <!--Profile-->
         <scene sceneID="40p-MX-Nil">
             <objects>
-                <viewController id="Ope-kF-rr0" sceneMemberID="viewController">
+                <viewController id="Ope-kF-rr0" customClass="ProfileViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OdG-qg-EHc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1I-5h-sLh">
+                                <rect key="frame" x="10" y="108" width="394" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="tuv-FH-Cas"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="logInAndlogOutButtonAction:" destination="Ope-kF-rr0" eventType="touchUpInside" id="4Mc-Iz-aQZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGH-gl-XdZ">
+                                <rect key="frame" x="10" y="163" width="394" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="QKg-d0-zKz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Purchase history">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="purchaseHistoryButtonAction:" destination="Ope-kF-rr0" eventType="touchUpInside" id="Nod-RT-HdT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GN5-5Q-Xeq">
+                                <rect key="frame" x="10" y="218" width="394" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="26m-GQ-yrm"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Terms &amp; Conditions">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="termsAndConditionsAction:" destination="Ope-kF-rr0" eventType="touchUpInside" id="YAi-1B-bZm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pA-qF-z05">
+                                <rect key="frame" x="10" y="273" width="394" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="jTo-h8-L2w"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Finish Registration">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="finishRegistrationAction:" destination="Ope-kF-rr0" eventType="touchUpInside" id="Tfv-pG-U3y"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hZY-tr-NjG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hZY-tr-NjG" firstAttribute="trailing" secondItem="A1I-5h-sLh" secondAttribute="trailing" constant="10" id="69i-jA-FV1"/>
+                            <constraint firstItem="hZY-tr-NjG" firstAttribute="trailing" secondItem="gGH-gl-XdZ" secondAttribute="trailing" constant="10" id="CQc-P1-uCY"/>
+                            <constraint firstItem="gGH-gl-XdZ" firstAttribute="leading" secondItem="hZY-tr-NjG" secondAttribute="leading" constant="10" id="LF7-U0-MfV"/>
+                            <constraint firstItem="GN5-5Q-Xeq" firstAttribute="leading" secondItem="hZY-tr-NjG" secondAttribute="leading" constant="10" id="Uds-XJ-rYs"/>
+                            <constraint firstItem="hZY-tr-NjG" firstAttribute="trailing" secondItem="GN5-5Q-Xeq" secondAttribute="trailing" constant="10" id="YiG-Xa-Wli"/>
+                            <constraint firstItem="4pA-qF-z05" firstAttribute="top" secondItem="GN5-5Q-Xeq" secondAttribute="bottom" constant="20" id="kjz-Ge-Kza"/>
+                            <constraint firstItem="4pA-qF-z05" firstAttribute="leading" secondItem="hZY-tr-NjG" secondAttribute="leading" constant="10" id="mYg-iM-0Id"/>
+                            <constraint firstItem="gGH-gl-XdZ" firstAttribute="top" secondItem="A1I-5h-sLh" secondAttribute="bottom" constant="20" id="oAe-8a-gLA"/>
+                            <constraint firstItem="hZY-tr-NjG" firstAttribute="trailing" secondItem="4pA-qF-z05" secondAttribute="trailing" constant="10" id="pwr-DN-8jI"/>
+                            <constraint firstItem="GN5-5Q-Xeq" firstAttribute="top" secondItem="gGH-gl-XdZ" secondAttribute="bottom" constant="20" id="u8v-Bv-xOp"/>
+                            <constraint firstItem="A1I-5h-sLh" firstAttribute="top" secondItem="hZY-tr-NjG" secondAttribute="top" constant="20" id="xBW-lT-5Gn"/>
+                            <constraint firstItem="A1I-5h-sLh" firstAttribute="leading" secondItem="hZY-tr-NjG" secondAttribute="leading" constant="10" id="zBd-XW-EdA"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="HVx-K8-Szo"/>
+                    <navigationItem key="navigationItem" title="Profile" id="qTE-QY-eVT"/>
+                    <connections>
+                        <outlet property="finishRegistration" destination="4pA-qF-z05" id="tl7-Nn-P51"/>
+                        <outlet property="logInAndLogOut" destination="A1I-5h-sLh" id="Odg-Qx-eAT"/>
+                        <outlet property="purchaseHistory" destination="gGH-gl-XdZ" id="d37-3D-Rcz"/>
+                        <outlet property="termsAndConditions" destination="GN5-5Q-Xeq" id="gyt-DI-LhW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugb-0t-CPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3616" y="30"/>
+            <point key="canvasLocation" x="-2410.144927536232" y="-232.36607142857142"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Xxc-ZR-3dO">
@@ -231,12 +308,12 @@
                         <segue destination="8LI-V5-7yi" kind="relationship" relationship="viewControllers" id="zQD-dd-Rt7"/>
                         <segue destination="qbo-9D-taF" kind="relationship" relationship="viewControllers" id="LdT-dj-afV"/>
                         <segue destination="vOs-sm-odK" kind="relationship" relationship="viewControllers" id="2UE-wm-JDH"/>
-                        <segue destination="Ope-kF-rr0" kind="relationship" relationship="viewControllers" id="Dlc-n4-KYf"/>
+                        <segue destination="upf-xz-N4Y" kind="relationship" relationship="viewControllers" id="Dlc-n4-KYf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs6-xD-c5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2091" y="29"/>
+            <point key="canvasLocation" x="-1181.1594202898552" y="28.794642857142854"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="OXm-QO-9jf">
@@ -643,6 +720,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgl-fx-9A4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-888.40579710144937" y="1516.7410714285713"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="bTk-6J-f5V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="upf-xz-N4Y" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="HVx-K8-Szo"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nTb-aZ-Apv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ope-kF-rr0" kind="relationship" relationship="rootViewController" id="ym9-tW-Ebb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IhL-eI-SaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3320.289855072464" y="-232.36607142857142"/>
         </scene>
     </scenes>
     <resources>

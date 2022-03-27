@@ -148,6 +148,9 @@ class MUSer  {
             }
         }
     }
+    class func logOut () {
+        
+    }
 }
 
 func convertUserToDictionary (user : MUSer) -> NSDictionary {
