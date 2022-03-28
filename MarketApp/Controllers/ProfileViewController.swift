@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var checkNumber : Int = 0
+    var checkEditOrFinishRegistrationNumber : Int = 0
 
     @IBOutlet weak var logInAndLogOut: UIButton!
     @IBOutlet weak var purchaseHistory: UIButton!
@@ -24,14 +24,19 @@ class ProfileViewController: UIViewController {
         purchaseHistory.layer.borderWidth = 0.2
         finishRegistration.layer.borderWidth = 0.2
         termsAndConditions.layer.borderWidth = 0.2
+      
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         checkLoginState()
-//        checkOnBoardState()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editPofile))
+        checkOnBoardState()
     }
 
     @objc func editPofile() {
-        let checkButton2 : Int = 2
-        self.checkNumber = checkButton2
+        let checkButton : Int = 1
+        self.checkEditOrFinishRegistrationNumber = checkButton
         showOnBoardView()
        
         
@@ -41,7 +46,10 @@ class ProfileViewController: UIViewController {
         if logInAndLogOut.titleLabel?.text == "Logout" {
             
         } else {
-            
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+            checkOnBoardState()
         }
     }
     
@@ -53,17 +61,19 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func finishRegistrationAction(_ sender: Any) {
-        let checkButton2 : Int = 1
-        self.checkNumber = checkButton2
+        let checkButton : Int = 2
+        self.checkEditOrFinishRegistrationNumber = checkButton
         showOnBoardView()
     }
     
     private  func checkLoginState() {
         if MUSer.currentUser() == nil {
             self.logInAndLogOut.setTitle("Login", for: .normal)
+            self.navigationItem.rightBarButtonItem = nil
         }
         else {
             self.logInAndLogOut.setTitle("Logout", for: .normal)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editPofile))
         }
     }
     
@@ -72,8 +82,8 @@ class ProfileViewController: UIViewController {
     @objc func showOnBoardView() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "OnBoardViewController") as! OnBoardViewController
-        vc.checkNumberOnBoard = self.checkNumber
-        self.present(vc, animated: true, completion: nil)
+        vc.checkNumberOnBoard = self.checkEditOrFinishRegistrationNumber
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
 
@@ -84,12 +94,14 @@ class ProfileViewController: UIViewController {
     private func checkOnBoardState() {
         if MUSer.currentUser() != nil {
             
-            if MUSer.currentUser()!.onBoard {
+            if MUSer.currentUser()!.onBoard{
                 finishRegistration.isEnabled = false
             } else {
                 finishRegistration.isEnabled = true
             }
             
+        } else {
+            finishRegistration.isEnabled = false
         }
         
         

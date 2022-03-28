@@ -148,8 +148,15 @@ class MUSer  {
             }
         }
     }
-    class func logOut () {
-        
+    class func logOut (completion : @escaping (_ error : Error? ) -> Void) {
+        do {
+           try Auth.auth().signOut()
+            UserDefaults.standard.removeObject(forKey: "currentUser")
+            UserDefaults.standard.synchronize()
+            completion(nil)
+        } catch let error as NSError {
+            completion(error)
+        }
     }
 }
 

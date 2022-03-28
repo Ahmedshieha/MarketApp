@@ -528,17 +528,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Fr-9h-2jE">
-                                <rect key="frame" x="20" y="120" width="374" height="34"/>
+                                <rect key="frame" x="20" y="164" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4vA-vd-99L">
-                                <rect key="frame" x="20" y="181" width="374" height="34"/>
+                                <rect key="frame" x="20" y="225" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lay-Lg-dGe">
-                                <rect key="frame" x="124" y="285" width="166" height="31"/>
+                                <rect key="frame" x="124" y="329" width="166" height="31"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -548,7 +548,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzk-HS-AhS">
-                                <rect key="frame" x="124" y="381" width="166" height="31"/>
+                                <rect key="frame" x="124" y="425" width="166" height="31"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -558,7 +558,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLF-At-h2r">
-                                <rect key="frame" x="124" y="453" width="166" height="31"/>
+                                <rect key="frame" x="124" y="497" width="166" height="31"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -568,7 +568,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEx-EQ-86V">
-                                <rect key="frame" x="124" y="511" width="166" height="31"/>
+                                <rect key="frame" x="124" y="555" width="166" height="31"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -578,7 +578,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObZ-Fg-5uh">
-                                <rect key="frame" x="10" y="44" width="68.5" height="31"/>
+                                <rect key="frame" x="10" y="88" width="68.5" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
@@ -613,6 +613,7 @@
                             <constraint firstItem="lEx-EQ-86V" firstAttribute="leading" secondItem="ZQN-WB-plJ" secondAttribute="leading" constant="124" id="uaZ-3s-FWs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="C40-LR-bZz"/>
                     <connections>
                         <outlet property="emailTextField" destination="9Fr-9h-2jE" id="kp8-JP-3tJ"/>
                         <outlet property="passwordTextField" destination="4vA-vd-99L" id="PDH-uQ-bNK"/>
@@ -621,9 +622,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqg-vB-WvE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="796" y="747"/>
+            <point key="canvasLocation" x="2300" y="746.65178571428567"/>
         </scene>
-        <!--On Board View Controller-->
+        <!--On Board-->
         <scene sceneID="0RG-Gu-wSI">
             <objects>
                 <viewController storyboardIdentifier="OnBoardViewController" id="zdg-7X-whN" customClass="OnBoardViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -631,14 +632,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Board" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNm-Re-oah">
-                                <rect key="frame" x="150.5" y="54" width="113" height="31.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtx-Ze-fku">
-                                <rect key="frame" x="5" y="54" width="135.5" height="32"/>
+                                <rect key="frame" x="5" y="88" width="74.5" height="32"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancle">
@@ -649,22 +644,22 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zG-9k-Jed">
-                                <rect key="frame" x="20" y="120" width="374" height="34"/>
+                                <rect key="frame" x="20" y="154" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMK-l4-EnP">
-                                <rect key="frame" x="20" y="164" width="374" height="34"/>
+                                <rect key="frame" x="20" y="198" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="family-name"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o79-KD-Jwh">
-                                <rect key="frame" x="20" y="208" width="374" height="34"/>
+                                <rect key="frame" x="20" y="242" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="street-address"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKt-nx-fsL">
-                                <rect key="frame" x="20" y="302" width="374" height="38"/>
+                                <rect key="frame" x="20" y="336" width="374" height="38"/>
                                 <color key="backgroundColor" red="0.50319892170000002" green="0.50319892170000002" blue="0.50319892170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.41984784600000002" green="0.41997992989999999" blue="0.43259960409999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
@@ -675,6 +670,17 @@
                                     <action selector="doneButton:" destination="zdg-7X-whN" eventType="touchUpInside" id="56I-Ha-wYF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-Nd-mM0">
+                                <rect key="frame" x="328.5" y="88" width="75.5" height="32"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="logOutButton:" destination="zdg-7X-whN" eventType="touchUpInside" id="hyw-q1-k3t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ofP-OS-lpk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -682,34 +688,38 @@
                         <constraints>
                             <constraint firstItem="ofP-OS-lpk" firstAttribute="trailing" secondItem="EMK-l4-EnP" secondAttribute="trailing" constant="20" id="4Be-Fz-2U3"/>
                             <constraint firstItem="EMK-l4-EnP" firstAttribute="top" secondItem="9zG-9k-Jed" secondAttribute="bottom" constant="10" id="5g2-HJ-OzH"/>
-                            <constraint firstItem="GNm-Re-oah" firstAttribute="top" secondItem="ofP-OS-lpk" secondAttribute="top" constant="10" id="8uo-cM-uSu"/>
-                            <constraint firstItem="GNm-Re-oah" firstAttribute="centerX" secondItem="G8B-Z4-92V" secondAttribute="centerX" id="Dyn-4f-pDx"/>
                             <constraint firstItem="o79-KD-Jwh" firstAttribute="leading" secondItem="ofP-OS-lpk" secondAttribute="leading" constant="20" id="EBi-8N-xbK"/>
                             <constraint firstItem="EMK-l4-EnP" firstAttribute="leading" secondItem="ofP-OS-lpk" secondAttribute="leading" constant="20" id="KrK-ZQ-JpU"/>
                             <constraint firstItem="o79-KD-Jwh" firstAttribute="top" secondItem="EMK-l4-EnP" secondAttribute="bottom" constant="10" id="LLJ-5v-EwP"/>
                             <constraint firstItem="ofP-OS-lpk" firstAttribute="trailing" secondItem="9zG-9k-Jed" secondAttribute="trailing" constant="20" id="Nap-gA-sih"/>
                             <constraint firstItem="ofP-OS-lpk" firstAttribute="trailing" secondItem="EKt-nx-fsL" secondAttribute="trailing" constant="20" id="WkY-yO-n5a"/>
-                            <constraint firstItem="jtx-Ze-fku" firstAttribute="top" secondItem="ofP-OS-lpk" secondAttribute="top" constant="10" id="Wu8-nv-C0J"/>
+                            <constraint firstItem="jtx-Ze-fku" firstAttribute="top" secondItem="ofP-OS-lpk" secondAttribute="top" id="Wu8-nv-C0J"/>
                             <constraint firstItem="ofP-OS-lpk" firstAttribute="trailing" secondItem="o79-KD-Jwh" secondAttribute="trailing" constant="20" id="cmE-OZ-x5P"/>
                             <constraint firstItem="jtx-Ze-fku" firstAttribute="leading" secondItem="ofP-OS-lpk" secondAttribute="leading" constant="5" id="khE-vf-Dtl"/>
                             <constraint firstItem="9zG-9k-Jed" firstAttribute="leading" secondItem="ofP-OS-lpk" secondAttribute="leading" constant="20" id="ln7-Ep-Fip"/>
                             <constraint firstItem="EKt-nx-fsL" firstAttribute="top" secondItem="o79-KD-Jwh" secondAttribute="bottom" constant="60" id="mn5-qb-NZs"/>
                             <constraint firstItem="EKt-nx-fsL" firstAttribute="centerX" secondItem="G8B-Z4-92V" secondAttribute="centerX" id="mrb-TZ-QtE"/>
-                            <constraint firstItem="GNm-Re-oah" firstAttribute="leading" secondItem="jtx-Ze-fku" secondAttribute="trailing" constant="10" id="nAu-Ne-eyK"/>
                             <constraint firstItem="9zG-9k-Jed" firstAttribute="top" secondItem="jtx-Ze-fku" secondAttribute="bottom" constant="34" id="qJA-p2-VIc"/>
                             <constraint firstItem="EKt-nx-fsL" firstAttribute="leading" secondItem="ofP-OS-lpk" secondAttribute="leading" constant="20" id="qjk-zu-zca"/>
+                            <constraint firstItem="9zG-9k-Jed" firstAttribute="top" secondItem="fcE-Nd-mM0" secondAttribute="bottom" constant="34" id="roz-vT-Ava"/>
+                            <constraint firstItem="ofP-OS-lpk" firstAttribute="trailing" secondItem="fcE-Nd-mM0" secondAttribute="trailing" constant="10" id="wp6-bJ-Vjn"/>
+                            <constraint firstItem="fcE-Nd-mM0" firstAttribute="top" secondItem="ofP-OS-lpk" secondAttribute="top" id="yLI-ZX-jwP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="On Board" id="FBr-vQ-sc1">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="xlw-ne-mNi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="o79-KD-Jwh" id="Z8O-I8-7j2"/>
                         <outlet property="doneButtonLayout" destination="EKt-nx-fsL" id="feL-cp-8k7"/>
                         <outlet property="firstNameTextField" destination="9zG-9k-Jed" id="f2U-bb-Xl0"/>
                         <outlet property="lastNameTextField" destination="EMK-l4-EnP" id="HRr-s1-yVW"/>
+                        <outlet property="logOutButtonLayout" destination="fcE-Nd-mM0" id="uQI-Rk-jTC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHi-0U-byM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2369.5652173913045" y="877.90178571428567"/>
+            <point key="canvasLocation" x="4189.855072463768" y="877.90178571428567"/>
         </scene>
         <!--Basket-->
         <scene sceneID="wrf-4Z-Pba">
@@ -827,6 +837,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IhL-eI-SaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3320.289855072464" y="-232.36607142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tWB-t4-QSh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iea-9i-X3l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="huU-xA-MB2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zdg-7X-whN" kind="relationship" relationship="rootViewController" id="3Hr-pM-EY4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eI7-iR-r5m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279.7101449275365" y="877.90178571428567"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IWr-4N-XE4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUr-3R-NLk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NfA-ye-evJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="y1Z-lc-gc9" kind="relationship" relationship="rootViewController" id="4YM-lJ-SCv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mYd-Xg-wFr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1389.8550724637682" y="746.65178571428567"/>
         </scene>
     </scenes>
     <resources>

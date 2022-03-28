@@ -16,6 +16,7 @@ class OnBoardViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var doneButtonLayout: UIButton!
     
+    @IBOutlet weak var logOutButtonLayout: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,13 +26,31 @@ class OnBoardViewController: UIViewController {
         firstNameTextField.addTarget(self, action: #selector(self.didTextFieldChange), for: UIControl.Event.editingChanged)
         lastNameTextField.addTarget(self, action: #selector(self.didTextFieldChange), for: UIControl.Event.editingChanged)
         addressTextField.addTarget(self, action: #selector(self.didTextFieldChange), for: UIControl.Event.editingChanged)
-        if checkNumberOnBoard == 1 {
-            print("finishRegistration")
-        } else {
-            print("Edit")
-        }
+        checkEditScreenOrFinishRegitration()
         
     }
+    
+    @IBAction func logOutButton(_ sender: Any) {
+        MUSer.logOut { error in
+            if error == nil {
+                print("no error")
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func checkEditScreenOrFinishRegitration() {
+        if checkNumberOnBoard == 1 {
+            
+            
+        }
+        else {
+            logOutButtonLayout.isHidden = true
+        }
+    }
+    
     @IBAction func cancleButton(_ sender: Any) {
         firstNameTextField.text = ""
         lastNameTextField.text = ""
@@ -62,13 +81,6 @@ class OnBoardViewController: UIViewController {
             doneButtonLayout.isEnabled = false
         }
         
-    }
-    func hideLoading() {
-        self.hud.dismiss()
-    }
-    func showLoading() {
-        self.hud.textLabel.text = "Loading"
-        self.hud.show(in: self.view)
     }
     
     func finishUpdatingProfile() {
