@@ -96,7 +96,7 @@ class MUSer  {
         return  nil
     }
     
-   class func loginUserWith (email : String , password:String , completion : @escaping (_ error : Error? , _ isEmailVerified : Bool)-> Void) {
+    class func loginUserWith (email : String , password:String , completion : @escaping (_ error : Error? , _ isEmailVerified : Bool)-> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { authDataResult, error in
             if error == nil {
                 if authDataResult!.user.isEmailVerified {
@@ -185,11 +185,28 @@ func downloadUserFromFireBase(userId :String , email :String) {
         }
         else {
             let user = MUSer(_objectId: userId, _email: email, _firstName: "", _lastName: "")
-           saveUserLocally(userDictionary: convertUserToDictionary(user: user ))
+            saveUserLocally(userDictionary: convertUserToDictionary(user: user ))
             saveUserToFireBase(user: user)
             
             
         }
+    }
+    
+}
+func updateCurrentUserInFireBase(withValues : [String:Any] , completion :@escaping (_ error : Error?) -> Void ) {
+    
+    if let currentUserDictionary = UserDefaults.standard.object(forKey: "currentUser") {
+        let userObject = (currentUserDictionary as! NSDictionary ).mutableCopy() as! NSMutableDictionary
+        userObject.setValuesForKeys(withValues)
+        
+        FirebaseCollectionRefrence(.User).document(MUSer.currentUserId()).updateData(withValues) { error in
+            completion(error)
+            if error == nil {
+                saveUserLocally(userDictionary: userObject)
+            }
+            
+        }
+        
     }
     
 }
