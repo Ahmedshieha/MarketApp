@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logInAndlogOutButtonAction(_ sender: Any) {
         if logInAndLogOut.titleLabel?.text == "Logout" {
-            
+           
         } else {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
@@ -54,6 +54,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func purchaseHistoryButtonAction(_ sender: Any) {
+        showPurchaseItemViewController()
     }
     
     
@@ -66,7 +67,7 @@ class ProfileViewController: UIViewController {
         showOnBoardView()
     }
     
-    private  func checkLoginState() {
+      func checkLoginState() {
         if MUSer.currentUser() == nil {
             self.logInAndLogOut.setTitle("Login", for: .normal)
             self.navigationItem.rightBarButtonItem = nil
@@ -86,6 +87,13 @@ class ProfileViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+     func showPurchaseItemViewController() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "PurchaseItemsViewController") as! PurchaseItemsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+
 
     
     

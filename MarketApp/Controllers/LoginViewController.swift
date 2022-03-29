@@ -53,9 +53,7 @@ class LoginViewController: UIViewController {
         }
         
     }
-    @IBAction func cancleButton(_ sender: Any) {
-        dismissView()
-    }
+ 
     @IBAction func forgetPassword(_ sender: Any) {
         if emailTextField.text != "" {
             MUSer.resetPassword(email: emailTextField.text!) { error in
@@ -88,8 +86,9 @@ class LoginViewController: UIViewController {
         MUSer.loginUserWith(email: withEmail, password: withPassword) { error, isEmailVerified in
             if error == nil {
                 if isEmailVerified {
-                    self.dismissView()
-                    print("succefull loging ")
+//                    let profile = ProfileViewController()
+//                    profile.checkLoginState()
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     self.hud.textLabel.text = "please verify your Email"
                     self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
