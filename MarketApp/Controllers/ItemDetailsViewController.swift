@@ -75,7 +75,7 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
         let id = UUID().uuidString
         let newBasket =  Basket()
         newBasket.id =  id
-        newBasket.ownerId  = "1234"
+        newBasket.ownerId  = MUSer.currentUserId()
         newBasket.itemdIds = [item.id]
         saveToBasket(basket: newBasket) { error in
             if error != nil {
@@ -110,15 +110,19 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
     
     func addToBasketButton () {
         
-//        downloadBasketFromFirebase(ownerId: "1234") { basket in
-//            if basket == nil {
-//                self.createNewBasket()
-//            } else {
-//                basket?.itemdIds.append(self.item.id)
-//                self.updateBasket(basket: basket!, withValues: ["itemIds":basket!.itemdIds!])
-//            }
-//        }
-        self.showLoginView()
+        if MUSer.currentUser() != nil {
+            downloadBasketFromFirebase(ownerId: MUSer.currentUserId()) { basket in
+                if basket == nil {
+                    self.createNewBasket()
+                } else {
+                    basket?.itemdIds.append(self.item.id)
+                    self.updateBasket(basket: basket!, withValues: ["itemIds":basket!.itemdIds!])
+                }
+            }
+        } else {
+            self.showLoginView()
+        }
+        
     }
     
     func showLoginView() {

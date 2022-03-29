@@ -14,6 +14,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     var basket : Basket?
     var itemsArray:[Item] = []
+    var purchasedItemIds : [String] = []
     var hud = JGProgressHUD()
     
     
@@ -31,7 +32,12 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadBasket()
+        if MUSer.currentUser() != nil {
+            self.loadBasket()
+        } else {
+            updateTotalLables()
+        }
+        
     }
     
     fileprivate func loadItems() {
@@ -45,7 +51,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
    private func loadBasket() {
-        downloadBasketFromFirebase(ownerId: "1234") { basket in
+       downloadBasketFromFirebase(ownerId: MUSer.currentUserId()) { basket in
             self.basket = basket
             self.loadItems()
         }
@@ -73,7 +79,54 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     @IBOutlet weak var itemsCountLable: UILabel!
     @IBOutlet weak var countLable: UILabel!
+    
+    
     @IBAction func checkOutButton(_ sender: Any) {
+        
+        if ((MUSer.currentUser()?.onBoard) != nil) {
+            for item in itemsArray {
+                purchasedItemIds.append(item.id)
+            }
+            
+            addItemToPurchaseHistory(itemsId: purchasedItemIds)
+            emptyBasket()
+        } else {
+            self.hud.textLabel.text = "please complete your account "
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.hud.show(in: self.view)
+            self.hud.dismiss(afterDelay: 2.0)
+        }
+    }
+    
+    private func emptyBasket () {
+        basket?.itemdIds.removeAll()
+        itemsArray.removeAll()
+        ItemsBasketCollectionView.reloadData()
+        
+        basket!.itemdIds = []
+        updateBasketInFireBase(basket!, withValues: ["itemdIds":basket!.itemdIds!]) { error in
+            if error != nil {
+                
+            } else {
+                self.loadItems()
+            }
+        }
+        
+    }
+    
+    
+    private func addItemToPurchaseHistory(itemsId : [String]) {
+        if MUSer.currentUser() != nil {
+            
+            let newItem = MUSer.currentUser()!.purchasedItems + itemsId
+            updateCurrentUserInFireBase(withValues: ["purchasedItems" : newItem]) { error in
+                if error != nil {
+                    print(error?.localizedDescription)
+                } else {
+                    
+                }
+            }
+        }
     }
     
     
