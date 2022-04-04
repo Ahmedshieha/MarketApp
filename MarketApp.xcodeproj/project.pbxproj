@@ -82,6 +82,7 @@
 		9CBABE1014AA40C4C92B939A /* Pods_MarketApp_MarketAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketApp_MarketAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E7694C948DB8661176936A /* Pods-MarketApp-MarketAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketApp-MarketAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarketApp-MarketAppUITests/Pods-MarketApp-MarketAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BD940E23C30156A239026EF0 /* Pods_MarketApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA138E3027FB1B8F00A6B0D2 /* MarketApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarketApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA153A41277FAB7700F6C02A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA153A4327825FD000F6C02A /* Rechabilty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechabilty.swift; sourceTree = "<group>"; };
 		FA153A452782606300F6C02A /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
@@ -302,6 +303,7 @@
 				FA33A6F927D659990052785B /* Extensions.swift */,
 				FA33A6FD27D673850052785B /* Functions.swift */,
 				FA776B5527E3ECB40080FA4B /* SwipeAction.swift */,
+				FA138E3027FB1B8F00A6B0D2 /* MarketApp-Bridging-Header.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -449,6 +451,7 @@
 				TargetAttributes = {
 					FAEEC4D9277343F90083EFD8 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1320;
 					};
 					FAEEC4EF277343FB0083EFD8 = {
 						CreatedOnToolsVersion = 13.0;
@@ -830,6 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3UA7J8M967;
@@ -848,6 +852,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AhmedReda.MarketApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MarketApp/Helper/MarketApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -859,6 +865,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3UA7J8M967;
@@ -877,6 +884,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.AhmedReda.MarketApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MarketApp/Helper/MarketApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

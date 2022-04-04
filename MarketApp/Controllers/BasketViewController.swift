@@ -10,12 +10,20 @@ import JGProgressHUD
 import SwipeCellKit
 
 class BasketViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, SwipeCollectionViewCellDelegate {
-    
+    @IBOutlet weak var ItemsBasketCollectionView: UICollectionView!
     
     var basket : Basket?
     var itemsArray:[Item] = []
     var purchasedItemIds : [String] = []
     var hud = JGProgressHUD()
+    var environment : String = PayPalEnvironmentNoNetwork {
+        willSet(newEnvironment) {
+            if (newEnvironment != environment ) {
+                PayPalMobile.preconnect(withEnvironment: newEnvironment)
+            }
+        }
+    }
+    var payPalConfig = PayPalConfiguration()
     
     
     override func viewDidLoad() {
@@ -23,6 +31,8 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.ItemsBasketCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
         ItemsBasketCollectionView.collectionViewLayout = createCompostionalLayout()
+        setupPaypal()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,12 +94,8 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     @IBAction func checkOutButton(_ sender: Any) {
         
         if ((MUSer.currentUser()?.onBoard) != nil) {
-            for item in itemsArray {
-                purchasedItemIds.append(item.id)
-            }
-            
-            addItemToPurchaseHistory(itemsId: purchasedItemIds)
-            emptyBasket()
+            payPalButtonPressed()
+          
         } else {
             self.hud.textLabel.text = "please complete your account "
             self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
@@ -112,6 +118,45 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
             }
         }
         
+    }
+    
+    
+    //MARK: - PayPal
+    
+   private func setupPaypal() {
+       payPalConfig.acceptCreditCards = false
+       payPalConfig.merchantName = "Market"
+       payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
+       payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
+       payPalConfig.languageOrLocale = Locale.preferredLanguages [0]
+       payPalConfig.payPalShippingAddressOption = .both
+    }
+    
+    func payPalButtonPressed() {
+        var itemsToBuy : [PayPalItem] = []
+        
+        for item in itemsArray {
+            let tempItem = PayPalItem(name: item.name, withQuantity: 1, withPrice: NSDecimalNumber(value: item.price), withCurrency: "USD", withSku: nil)
+            
+            purchasedItemIds.append(item.id)
+            itemsToBuy.append(tempItem)
+        }
+        let subTotal = PayPalItem.totalPrice(forItems: itemsToBuy)
+        
+//        optional
+        let shippingCost = NSDecimalNumber(string: "50.0")
+        let tax = NSDecimalNumber(string: "5.0")
+        
+        let paymentDetails = PayPalPaymentDetails(subtotal: subTotal, withShipping: shippingCost, withTax: tax)
+        let total = subTotal.adding(shippingCost).adding(tax)
+        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "no thing ", intent: .sale)
+        payment.items = itemsToBuy
+        payment.paymentDetails = paymentDetails
+        
+        if payment.processable {
+            let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
+            present(paymentViewController!, animated: true, completion: nil)
+        }
     }
     
     
@@ -191,10 +236,9 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         self.navigationController?.pushViewController(itemDetailsViewController!, animated: true)
     }
     
-    @IBOutlet weak var ItemsBasketCollectionView: UICollectionView!
     
     
-    private func createCompostionalLayout () -> UICollectionViewCompositionalLayout {
+        private func createCompostionalLayout () -> UICollectionViewCompositionalLayout {
         
         return UICollectionViewCompositionalLayout {( sectionNumber , env ) -> NSCollectionLayoutSection? in
             
@@ -224,6 +268,24 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
 }
 
+extension BasketViewController : PayPalPaymentDelegate {
+    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
+        paymentViewController.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
+        paymentViewController.dismiss(animated: true) {
+//  what will happen after success
+            self.addItemToPurchaseHistory(itemsId: self.purchasedItemIds)
+            self.emptyBasket()
+        }
+    }
+    
+    
+}
+
+
 //Mark : swipe Action
 var defaultOptions = SwipeOptions()
 var isSwipeRightEnabled = true
@@ -245,3 +307,13 @@ func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
         action.transitionDelegate = ScaleTransition.default
     }
 }
+
+
+//   for item in itemsArray {
+//purchasedItemIds.append(item.id)
+//}
+//
+//addItemToPurchaseHistory(itemsId: purchasedItemIds)
+//emptyBasket()
+
+
