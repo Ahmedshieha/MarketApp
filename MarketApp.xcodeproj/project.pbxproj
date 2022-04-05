@@ -10,6 +10,8 @@
 		54CCC58B0E3ACD53CC6242D5 /* Pods_MarketAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5869FDAE384F893AC3D5F61C /* Pods_MarketAppTests.framework */; };
 		951CB181721DA0C65AA37A4E /* Pods_MarketApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD940E23C30156A239026EF0 /* Pods_MarketApp.framework */; };
 		C8D43A916374929E7B674158 /* Pods_MarketApp_MarketAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBABE1014AA40C4C92B939A /* Pods_MarketApp_MarketAppUITests.framework */; };
+		FA138E3327FC759600A6B0D2 /* Algolia.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA138E3227FC759600A6B0D2 /* Algolia.swift */; };
+		FA138E3627FCF10600A6B0D2 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA138E3527FCF10600A6B0D2 /* Items.swift */; };
 		FA153A42277FAB7700F6C02A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA153A41277FAB7700F6C02A /* Constants.swift */; };
 		FA153A4427825FD000F6C02A /* Rechabilty.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA153A4327825FD000F6C02A /* Rechabilty.swift */; };
 		FA153A462782606300F6C02A /* FirebaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA153A452782606300F6C02A /* FirebaseStorage.swift */; };
@@ -46,7 +48,6 @@
 		FACB60DF27C82BC0009138C7 /* UploadCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB60DE27C82BC0009138C7 /* UploadCategories.swift */; };
 		FACB60E127C82C22009138C7 /* UploadItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACB60E027C82C22009138C7 /* UploadItems.swift */; };
 		FAEEC4DE277343F90083EFD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEC4DD277343F90083EFD8 /* AppDelegate.swift */; };
-		FAEEC4E0277343F90083EFD8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEC4DF277343F90083EFD8 /* SceneDelegate.swift */; };
 		FAEEC4E2277343F90083EFD8 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEEC4E1277343F90083EFD8 /* AddItemViewController.swift */; };
 		FAEEC4E5277343F90083EFD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEEC4E3277343F90083EFD8 /* Main.storyboard */; };
 		FAEEC4E7277343FB0083EFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAEEC4E6277343FB0083EFD8 /* Assets.xcassets */; };
@@ -83,6 +84,8 @@
 		B8E7694C948DB8661176936A /* Pods-MarketApp-MarketAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketApp-MarketAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarketApp-MarketAppUITests/Pods-MarketApp-MarketAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BD940E23C30156A239026EF0 /* Pods_MarketApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA138E3027FB1B8F00A6B0D2 /* MarketApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarketApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA138E3227FC759600A6B0D2 /* Algolia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algolia.swift; sourceTree = "<group>"; };
+		FA138E3527FCF10600A6B0D2 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		FA153A41277FAB7700F6C02A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA153A4327825FD000F6C02A /* Rechabilty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rechabilty.swift; sourceTree = "<group>"; };
 		FA153A452782606300F6C02A /* FirebaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorage.swift; sourceTree = "<group>"; };
@@ -120,7 +123,6 @@
 		FACB60E027C82C22009138C7 /* UploadItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadItems.swift; sourceTree = "<group>"; };
 		FAEEC4DA277343F90083EFD8 /* MarketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarketApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAEEC4DD277343F90083EFD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAEEC4DF277343F90083EFD8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FAEEC4E1277343F90083EFD8 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		FAEEC4E4277343F90083EFD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAEEC4E6277343FB0083EFD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -183,6 +185,14 @@
 				5869FDAE384F893AC3D5F61C /* Pods_MarketAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA138E3427FCF0D600A6B0D2 /* AlgoilaSearch */ = {
+			isa = PBXGroup;
+			children = (
+				FA138E3527FCF10600A6B0D2 /* Items.swift */,
+			);
+			path = AlgoilaSearch;
 			sourceTree = "<group>";
 		};
 		FA1BF6D627751C600092D6F9 /* CustomCells */ = {
@@ -291,6 +301,7 @@
 				FA66212D2778B542005F15C2 /* Item.swift */,
 				FA776B4327E0FCCE0080FA4B /* Basket.swift */,
 				FA97820827E90A6100E7BEAD /* User.swift */,
+				FA138E3227FC759600A6B0D2 /* Algolia.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -327,6 +338,7 @@
 				FAEEC4F3277343FB0083EFD8 /* MarketAppTests */,
 				FA1BF6D627751C600092D6F9 /* CustomCells */,
 				FACB60DB27C82B7B009138C7 /* Firebase */,
+				FA138E3427FCF0D600A6B0D2 /* AlgoilaSearch */,
 				FAEEC4FD277343FB0083EFD8 /* MarketAppUITests */,
 				FAEEC4DB277343F90083EFD8 /* Products */,
 				0441DCBE25180B3628A3AA41 /* Pods */,
@@ -348,7 +360,6 @@
 			isa = PBXGroup;
 			children = (
 				FAEEC4DD277343F90083EFD8 /* AppDelegate.swift */,
-				FAEEC4DF277343F90083EFD8 /* SceneDelegate.swift */,
 				FAEEC4E3277343F90083EFD8 /* Main.storyboard */,
 				FAEEC4E6277343FB0083EFD8 /* Assets.xcassets */,
 				FAEEC4E8277343FB0083EFD8 /* LaunchScreen.storyboard */,
@@ -623,6 +634,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA138E3627FCF10600A6B0D2 /* Items.swift in Sources */,
 				FA776B4D27E1490A0080FA4B /* BasketViewController.swift in Sources */,
 				FAC1FADD27734B4B00B3BDC7 /* FirebaseRefrence.swift in Sources */,
 				FA33A74627DC17EF0052785B /* offerCollectionViewCell.swift in Sources */,
@@ -649,13 +661,13 @@
 				FACB60DF27C82BC0009138C7 /* UploadCategories.swift in Sources */,
 				FA33A74D27DE48F90052785B /* ItemDetailsViewController.swift in Sources */,
 				FA33A74227DBE8200052785B /* HomeCollectionViewCell.swift in Sources */,
+				FA138E3327FC759600A6B0D2 /* Algolia.swift in Sources */,
 				FABB518727F1A6BD00EA4A98 /* OnBoardViewController.swift in Sources */,
 				FABB518927F2860000EA4A98 /* PurchaseItemsViewController.swift in Sources */,
 				FA776B4B27E1021C0080FA4B /* DownloadBasket.swift in Sources */,
 				FA776B5A27E757090080FA4B /* ItemsViewController.swift in Sources */,
 				FA153A462782606300F6C02A /* FirebaseStorage.swift in Sources */,
 				FACB60DD27C82B96009138C7 /* GetCategories.swift in Sources */,
-				FAEEC4E0277343F90083EFD8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -82,6 +82,7 @@ class AddItemViewController: UIViewController {
                 
                 item.imageLinks = imageLinks
                 saveItemToFirebase(item: item)
+//                saveItemToAlgolia(item: item)
                 self.popView()
                 self.hud.dismiss()
             }
@@ -90,6 +91,7 @@ class AddItemViewController: UIViewController {
         else {
             
             saveItemToFirebase(item: item)
+            saveItemToAlgolia(item: item)
             popView()
             
         }
