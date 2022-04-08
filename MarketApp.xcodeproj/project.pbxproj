@@ -10,6 +10,8 @@
 		54CCC58B0E3ACD53CC6242D5 /* Pods_MarketAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5869FDAE384F893AC3D5F61C /* Pods_MarketAppTests.framework */; };
 		951CB181721DA0C65AA37A4E /* Pods_MarketApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD940E23C30156A239026EF0 /* Pods_MarketApp.framework */; };
 		C8D43A916374929E7B674158 /* Pods_MarketApp_MarketAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBABE1014AA40C4C92B939A /* Pods_MarketApp_MarketAppUITests.framework */; };
+		FA0BCA8C27FFA8C000BC822F /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCA8B27FFA8C000BC822F /* StripeClient.swift */; };
+		FA0BCA8E27FFBB4500BC822F /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCA8D27FFBB4500BC822F /* PaymentViewController.swift */; };
 		FA138E3327FC759600A6B0D2 /* Algolia.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA138E3227FC759600A6B0D2 /* Algolia.swift */; };
 		FA138E3627FCF10600A6B0D2 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA138E3527FCF10600A6B0D2 /* Items.swift */; };
 		FA153A42277FAB7700F6C02A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA153A41277FAB7700F6C02A /* Constants.swift */; };
@@ -83,6 +85,8 @@
 		9CBABE1014AA40C4C92B939A /* Pods_MarketApp_MarketAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketApp_MarketAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E7694C948DB8661176936A /* Pods-MarketApp-MarketAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketApp-MarketAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MarketApp-MarketAppUITests/Pods-MarketApp-MarketAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BD940E23C30156A239026EF0 /* Pods_MarketApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0BCA8B27FFA8C000BC822F /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
+		FA0BCA8D27FFBB4500BC822F /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		FA138E3027FB1B8F00A6B0D2 /* MarketApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarketApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA138E3227FC759600A6B0D2 /* Algolia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algolia.swift; sourceTree = "<group>"; };
 		FA138E3527FCF10600A6B0D2 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				FABB518427F0FB4C00EA4A98 /* ProfileViewController.swift */,
 				FABB518627F1A6BD00EA4A98 /* OnBoardViewController.swift */,
 				FABB518827F2860000EA4A98 /* PurchaseItemsViewController.swift */,
+				FA0BCA8D27FFBB4500BC822F /* PaymentViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				FAEEC4DC277343F90083EFD8 /* MarketApp */,
 				FAEEC4F3277343FB0083EFD8 /* MarketAppTests */,
 				FA1BF6D627751C600092D6F9 /* CustomCells */,
+				FAFE042927FF901900A2D314 /* StripePayment */,
 				FACB60DB27C82B7B009138C7 /* Firebase */,
 				FA138E3427FCF0D600A6B0D2 /* AlgoilaSearch */,
 				FAEEC4FD277343FB0083EFD8 /* MarketAppUITests */,
@@ -387,6 +393,14 @@
 				FAEEC500277343FB0083EFD8 /* MarketAppUITestsLaunchTests.swift */,
 			);
 			path = MarketAppUITests;
+			sourceTree = "<group>";
+		};
+		FAFE042927FF901900A2D314 /* StripePayment */ = {
+			isa = PBXGroup;
+			children = (
+				FA0BCA8B27FFA8C000BC822F /* StripeClient.swift */,
+			);
+			path = StripePayment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,6 +655,7 @@
 				FA33A6FA27D659990052785B /* Extensions.swift in Sources */,
 				FACB60E127C82C22009138C7 /* UploadItems.swift in Sources */,
 				FA97820727E9033600E7BEAD /* LoginViewController.swift in Sources */,
+				FA0BCA8E27FFBB4500BC822F /* PaymentViewController.swift in Sources */,
 				FA33A6FE27D673850052785B /* Functions.swift in Sources */,
 				FA66212E2778B542005F15C2 /* Item.swift in Sources */,
 				FA97820927E90A6100E7BEAD /* User.swift in Sources */,
@@ -652,6 +667,7 @@
 				FA776B4627E0FEA10080FA4B /* SaveToBasket.swift in Sources */,
 				FA776B4427E0FCCE0080FA4B /* Basket.swift in Sources */,
 				FA33A75727DE4A460052785B /* ItemImagesCollectionViewCell.swift in Sources */,
+				FA0BCA8C27FFA8C000BC822F /* StripeClient.swift in Sources */,
 				FA776B5127E149E80080FA4B /* ItemCollectionViewCell.swift in Sources */,
 				FA153A42277FAB7700F6C02A /* Constants.swift in Sources */,
 				FAEEC4E2277343F90083EFD8 /* AddItemViewController.swift in Sources */,

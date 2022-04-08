@@ -6,5 +6,10 @@
 	<string>camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>library</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

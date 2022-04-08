@@ -24,9 +24,18 @@ class ItemCollectionViewCell: SwipeCollectionViewCell {
     func configureItemCellTest(item:Item) {
         
         itemLableName.text = item.name
-        itemPriceLable.text? = "$" + convertToCurrency(item.price)
+        if item.price != nil {
+            itemPriceLable.text? = "$" + convertToCurrency(item.price)
+        } else {
+            itemPriceLable.text? = "$" + "0.0"
+        }
+        
         itemDescriptionLable.text  = item.description
         itemPriceLable.adjustsFontSizeToFitWidth =  true
+    }
+    
+    func checkPrice () {
+        
     }
 
 }

@@ -82,6 +82,59 @@
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="28.794642857142854"/>
         </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="ErC-O0-vkb">
+            <objects>
+                <viewController storyboardIdentifier="PaymentViewController" id="5nt-0G-0Xq" customClass="PaymentViewController" customModule="MarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cKK-FS-H4E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui6-Ap-9wG">
+                                <rect key="frame" x="20" y="54" width="85" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="T0B-VQ-B8L"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancle">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancleButton:" destination="5nt-0G-0Xq" eventType="touchUpInside" id="B0u-HT-CBN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXS-IY-d5Z">
+                                <rect key="frame" x="323" y="54" width="71" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="71" id="g8y-oq-lvv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="doneButton:" destination="5nt-0G-0Xq" eventType="touchUpInside" id="SZs-2c-VPC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PsP-b4-6zJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ui6-Ap-9wG" firstAttribute="top" secondItem="PsP-b4-6zJ" secondAttribute="top" constant="10" id="3aT-tZ-7wl"/>
+                            <constraint firstItem="PsP-b4-6zJ" firstAttribute="trailing" secondItem="cXS-IY-d5Z" secondAttribute="trailing" constant="20" id="5AE-SI-Kfr"/>
+                            <constraint firstItem="cXS-IY-d5Z" firstAttribute="top" secondItem="PsP-b4-6zJ" secondAttribute="top" constant="10" id="62J-ym-SYK"/>
+                            <constraint firstItem="Ui6-Ap-9wG" firstAttribute="leading" secondItem="PsP-b4-6zJ" secondAttribute="leading" constant="20" id="Wr3-Yl-vSp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="cXS-IY-d5Z" id="gDI-TK-D7j"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jtC-z6-bbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498.5507246376812" y="-141.29464285714286"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="hU0-6y-DYK">
             <objects>

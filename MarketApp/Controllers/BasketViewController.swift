@@ -8,6 +8,7 @@
 import UIKit
 import JGProgressHUD
 import SwipeCellKit
+import Stripe
 
 class BasketViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, SwipeCollectionViewCellDelegate {
     @IBOutlet weak var ItemsBasketCollectionView: UICollectionView!
@@ -16,14 +17,8 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     var itemsArray:[Item] = []
     var purchasedItemIds : [String] = []
     var hud = JGProgressHUD()
-    var environment : String = PayPalEnvironmentNoNetwork {
-        willSet(newEnvironment) {
-            if (newEnvironment != environment ) {
-                PayPalMobile.preconnect(withEnvironment: newEnvironment)
-            }
-        }
-    }
-    var payPalConfig = PayPalConfiguration()
+    
+    var totalPrice = 0
     
     
     override func viewDidLoad() {
@@ -31,7 +26,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         
         self.ItemsBasketCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemCell")
         ItemsBasketCollectionView.collectionViewLayout = createCompostionalLayout()
-        setupPaypal()
+       
         
     }
     
@@ -94,13 +89,11 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     @IBAction func checkOutButton(_ sender: Any) {
         
         if ((MUSer.currentUser()?.onBoard) != nil) {
-            payPalButtonPressed()
-          
+            if itemsArray.count != 0 {
+                self.showCardView()
+            } 
         } else {
-            self.hud.textLabel.text = "please complete your account "
-            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
-            self.hud.show(in: self.view)
-            self.hud.dismiss(afterDelay: 2.0)
+            self.showNotification(text: "please complete your account ", isError: true)
         }
     }
     
@@ -119,44 +112,50 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }
         
     }
-    
-    
-    //MARK: - PayPal
-    
-   private func setupPaypal() {
-       payPalConfig.acceptCreditCards = false
-       payPalConfig.merchantName = "Market"
-       payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
-       payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
-       payPalConfig.languageOrLocale = Locale.preferredLanguages [0]
-       payPalConfig.payPalShippingAddressOption = .both
+    private func showCardView() {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "PaymentViewController") as! PaymentViewController
+        vc.delegate = self
+        
+        present(vc, animated: true, completion: nil)
+        
     }
     
-    func payPalButtonPressed() {
-        var itemsToBuy : [PayPalItem] = []
+    
+    
+
+    
+    func stripeButtonPressed(token:STPToken) {
+        self.totalPrice = 0
         
         for item in itemsArray {
-            let tempItem = PayPalItem(name: item.name, withQuantity: 1, withPrice: NSDecimalNumber(value: item.price), withCurrency: "USD", withSku: nil)
-            
             purchasedItemIds.append(item.id)
-            itemsToBuy.append(tempItem)
+            self.totalPrice += Int(item.price)
         }
-        let subTotal = PayPalItem.totalPrice(forItems: itemsToBuy)
-        
-//        optional
-        let shippingCost = NSDecimalNumber(string: "50.0")
-        let tax = NSDecimalNumber(string: "5.0")
-        
-        let paymentDetails = PayPalPaymentDetails(subtotal: subTotal, withShipping: shippingCost, withTax: tax)
-        let total = subTotal.adding(shippingCost).adding(tax)
-        let payment = PayPalPayment(amount: total, currencyCode: "USD", shortDescription: "no thing ", intent: .sale)
-        payment.items = itemsToBuy
-        payment.paymentDetails = paymentDetails
-        
-        if payment.processable {
-            let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
-            present(paymentViewController!, animated: true, completion: nil)
+        self.totalPrice = self.totalPrice * 100
+        StripeClient.sharedClient.createAndConfirmPayment(token, amount: totalPrice) { error in
+            if error != nil {
+                print(error!.localizedDescription)
+            } else {
+                self.emptyBasket()
+                self.addItemToPurchaseHistory(itemsId: self.purchasedItemIds)
+                self.showNotification(text: "payment success", isError: false)
+            }
         }
+    }
+    
+    func showNotification(text:String , isError : Bool) {
+        if isError {
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            
+        } else {
+            self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+            
+        }
+        self.hud.textLabel.text = text
+        self.hud.show(in: self.view)
+        
     }
     
     
@@ -166,7 +165,7 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
             let newItem = MUSer.currentUser()!.purchasedItems + itemsId
             updateCurrentUserInFireBase(withValues: ["purchasedItems" : newItem]) { error in
                 if error != nil {
-                    print(error?.localizedDescription)
+                    print(error!.localizedDescription)
                 } else {
                     
                 }
@@ -268,24 +267,6 @@ class BasketViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
 }
 
-extension BasketViewController : PayPalPaymentDelegate {
-    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
-        paymentViewController.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
-        paymentViewController.dismiss(animated: true) {
-//  what will happen after success
-            self.addItemToPurchaseHistory(itemsId: self.purchasedItemIds)
-            self.emptyBasket()
-        }
-    }
-    
-    
-}
-
-
 //Mark : swipe Action
 var defaultOptions = SwipeOptions()
 var isSwipeRightEnabled = true
@@ -317,3 +298,14 @@ func configure(action: SwipeAction, with descriptor: ActionDescriptor) {
 //emptyBasket()
 
 
+extension BasketViewController : CardInfoViewControllerDelegate {
+    func Done(_ token: STPToken) {
+        stripeButtonPressed(token: token)
+    }
+    
+    func Cancle() {
+        showNotification(text: "Payment Cancelled", isError: true)
+    }
+    
+    
+}

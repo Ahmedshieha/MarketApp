@@ -27,13 +27,24 @@ class ItemDetailsViewController: UIViewController , UICollectionViewDelegate , U
     override func viewDidLoad() {
         super.viewDidLoad()
         itemImagesCollectionView.collectionViewLayout = createCompostionalLayout()
-        itemNameLable.text = item?.name
-        itemPriceLable.text? = "Price :" + "  " + "$" + convertToCurrency(item.price)
-        itemPriceLable.textColor = .red
-        itemDescriptionTextView.text = item.description ?? ""
+        
         downloadItemImages()
         itemImagesCollectionView.dataSource = self
         itemImagesCollectionView.delegate =  self
+        configureItemDetails()
+    }
+    
+    func configureItemDetails() {
+        itemNameLable.text = item?.name
+        
+        if item.price != nil {
+            itemPriceLable.text? = "Price :" + "  " + "$" + convertToCurrency(item.price)
+        } else {
+            itemPriceLable.text = "Price :" + "  " + "$" + "0.0"
+        }
+       
+        itemPriceLable.textColor = .red
+        itemDescriptionTextView.text = item.description ?? ""
         itemImagesCollectionView.register(UINib(nibName: "ItemImagesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Itemimagecell")
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backButton))
         
