@@ -24,7 +24,6 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         downloadCategories()
         self.navigationItem.title = "Home"
         configureCollectionViewAndCells()
-        
     }
     
     func downloadCategories() {
@@ -33,8 +32,6 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
             self.homeCollectionView.reloadData()
         }
     }
-    
-    
     func configureCollectionViewAndCells() {
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
@@ -43,11 +40,7 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         self.homeCollectionView.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell2")
         self.homeCollectionView.register(UINib(nibName: "offerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell3")
     }
-    
-    
-    
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if section == 1 {
@@ -60,7 +53,6 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         2
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
@@ -71,26 +63,30 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
             cell.backgroundColor = .orange
             return cell
         }
-        
-        
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell3", for: indexPath)  as! offerCollectionViewCell
         
         cell.offerimage.image  = images[indexPath.row]
         
         cell.offerimage.layer.cornerRadius = 15
         return cell
-        
-        
-        
     }
+    
+    
+    
+    
+    
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         let header1 = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
         header1.backgroundColor = .white
         return header1
         
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         if indexPath.section == 1 {
@@ -155,9 +151,6 @@ class HomeViewController: UIViewController  , UICollectionViewDataSource , UICol
         return section
         
     }
-    
-    
-    
     
 }
 class Header : UICollectionReusableView {

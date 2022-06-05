@@ -73,7 +73,7 @@
                 <outlet property="itemLableName" destination="aA7-Ub-1B5" id="al2-FZ-CZm"/>
                 <outlet property="itemPriceLable" destination="wzx-ct-bQp" id="et2-Yf-CWs"/>
             </connections>
-            <point key="canvasLocation" x="197.82608695652175" y="92.745535714285708"/>
+            <point key="canvasLocation" x="92" y="73"/>
         </collectionViewCell>
     </objects>
     <resources>
